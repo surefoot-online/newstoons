@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons — the news, drawn for kids</title>
 <meta name="description" content="Daily news retold as a friendly comic for kids ages 6-10.">
-<link rel="stylesheet" href="style.css?v=8d6a8150">
+<link rel="stylesheet" href="style.css?v=48c1619b">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -104,6 +104,19 @@ window.newstoonsTap = function (key) {
 };
 if (window.NEWSTOONS_PAGE_KEY) window.newstoonsTap(window.NEWSTOONS_PAGE_KEY);
 document.addEventListener('click', function (ev) {
+  var face = ev.target.closest('.face');
+  if (face) {
+    var box = face.closest('.rating');
+    if (box && !box.dataset.done) {
+      box.dataset.done = '1';
+      window.newstoonsTap(box.dataset.ep + ':' + face.dataset.rate);
+      box.querySelectorAll('.face').forEach(function (f) { f.classList.remove('chosen'); });
+      face.classList.add('chosen');
+      var t = box.querySelector('.rate-thanks');
+      if (t) t.hidden = false;
+    }
+    return;
+  }
   var btn = ev.target.closest('.listen');
   if (!btn) return;
   if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
@@ -126,7 +139,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./", "live": true}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "zh-TW/", "live": true}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "zh-CN/", "live": true}};</script><script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js?v=8d6a8150"></script>
+<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./", "live": true}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "zh-TW/", "live": true}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "zh-CN/", "live": true}};</script><script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js?v=48c1619b"></script>
 <footer>
   <p>Adapted for kids from reporting by NBC Nightly News. NewsToons is an independent family project and is not affiliated with or endorsed by NBC.</p>
   <p>Episodes © the Family M-Team, licensed

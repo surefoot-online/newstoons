@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons — the news, drawn for kids — Episode 2</title>
 <meta name="description" content="Episode 2: Peace, Storms & Garden Magic">
-<link rel="stylesheet" href="../style.css?v=8d6a8150">
+<link rel="stylesheet" href="../style.css?v=48c1619b">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -28,6 +28,15 @@
 <figure><img src="../assets/ep2/panel5.webp" alt="Panel 5: Community Response" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep2/panel5.mp3" data-tap="listen:en-US:ep2:p5" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
 <figure><img src="../assets/ep2/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep2/panel6.mp3" data-tap="listen:en-US:ep2:p6" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
 
+  <section class="rating" data-ep="rate:en-US:ep2">
+    <p class="rate-ask">Did you like this episode?</p>
+    <div class="rate-faces">
+      <button class="face" data-rate="happy" aria-label="happy">🙂</button>
+      <button class="face" data-rate="ok" aria-label="ok">😐</button>
+      <button class="face" data-rate="sad" aria-label="sad">🙁</button>
+    </div>
+    <p class="rate-thanks" hidden>Thank you! 💛</p>
+  </section>
   <nav class="epnav"><a class="btn" href="../ep1/">⬅️ Episode 1</a><a class="btn home" href="../index.html">Episodes 🏠</a><a class="btn" href="../ep3/">Episode 3 ➡️</a></nav>
 </article>
 </main>
@@ -45,6 +54,19 @@ window.newstoonsTap = function (key) {
 };
 if (window.NEWSTOONS_PAGE_KEY) window.newstoonsTap(window.NEWSTOONS_PAGE_KEY);
 document.addEventListener('click', function (ev) {
+  var face = ev.target.closest('.face');
+  if (face) {
+    var box = face.closest('.rating');
+    if (box && !box.dataset.done) {
+      box.dataset.done = '1';
+      window.newstoonsTap(box.dataset.ep + ':' + face.dataset.rate);
+      box.querySelectorAll('.face').forEach(function (f) { f.classList.remove('chosen'); });
+      face.classList.add('chosen');
+      var t = box.querySelector('.rate-thanks');
+      if (t) t.hidden = false;
+    }
+    return;
+  }
   var btn = ev.target.closest('.listen');
   if (!btn) return;
   if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);

@@ -112,3 +112,16 @@ figure { text-align: center; }
 .grid-title { text-align: center; margin: 0.4rem 0 1rem; font-size: 1.4rem; }
 .sponsors { font-weight: 700; color: #4a5a75; }
 #globe path:hover { filter: brightness(1.15); stroke: #23324a; stroke-width: 1.4px; }
+
+/* per-episode kid rating */
+.rating { text-align: center; margin: 1.6rem 0 0.4rem; }
+.rate-ask { font-weight: 800; color: #23324a; margin-bottom: 0.5rem; }
+.rate-faces { display: flex; gap: 0.9rem; justify-content: center; }
+.face {
+  border: 3px solid transparent; background: #ffffff; cursor: pointer;
+  font-size: 2.2rem; line-height: 1; padding: 0.35rem 0.6rem; border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(29, 95, 214, 0.18); transition: transform 0.12s ease;
+}
+.face:hover { transform: scale(1.12); }
+.face.chosen { border-color: #ff7a1a; background: #fff3e6; transform: scale(1.15); }
+.rate-thanks { margin-top: 0.6rem; font-weight: 800; color: #1d5fd6; }
