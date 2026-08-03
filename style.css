@@ -111,3 +111,4 @@ figure { position: relative; }
 .btn.soon { background: #ffd94d; color: #23324a; box-shadow: 0 3px 0 #d9b425; cursor: default; }
 .grid-title { text-align: center; margin: 0.4rem 0 1rem; font-size: 1.4rem; }
 .sponsors { font-weight: 700; color: #4a5a75; }
+#globe path:hover { filter: brightness(1.15); stroke: #23324a; stroke-width: 1.4px; }

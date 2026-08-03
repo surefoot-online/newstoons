@@ -34,24 +34,41 @@
     var sel = landG.selectAll('path').data(countries).enter().append('path')
       .attr('fill', function (d) {
         var e = EDITIONS[+d.id];
-        return e ? (e.live ? '#ff7a1a' : '#ffd94d') : '#8fd48f';
+        // Selectable (live) = dark green; coming soon = yellow; rest = light green.
+        return e ? (e.live ? '#1e8a3c' : '#ffd94d') : '#b5e0ad';
       })
       .attr('stroke', '#ffffff').attr('stroke-width', 0.6)
       .style('cursor', 'pointer')
-      .on('click', function (event, d) {
-        if (dragged) return;
+      .on('mouseover', function (event, d) {
+        if (dragging) return;
         var e = EDITIONS[+d.id];
-        var msg;
-        if (e && e.live && e.path) { window.location.href = e.path; return; }
-        if (e) msg = e.name + ' NewsToons is sprouting — coming soon! 🌱';
-        else msg = (d.properties && d.properties.name ? d.properties.name : 'That country') +
-                   ' has no NewsToons yet — maybe you’ll make it one day! ✏️';
+        var name = (d.properties && d.properties.name) || '';
         if (!toast.empty()) {
-          toast.text(msg).style('opacity', 1);
+          toast.text(e ? (e.label + (e.live ? '' : ' · 🌱')) : name)
+               .style('opacity', 1);
           clearTimeout(toast.node()._t);
-          toast.node()._t = setTimeout(function () { toast.style('opacity', 0); }, 2600);
         }
+      })
+      .on('mouseout', function () {
+        if (toast.empty()) return;
+        clearTimeout(toast.node()._t);
+        toast.node()._t = setTimeout(function () { toast.style('opacity', 0); }, 400);
       });
+
+    function handleCountry(d) {
+      if (!d) return;
+      var e = EDITIONS[+d.id];
+      var msg;
+      if (e && e.live && e.path) { window.location.href = e.path; return; }
+      if (e) msg = e.name + ' NewsToons is sprouting — coming soon! 🌱';
+      else msg = (d.properties && d.properties.name ? d.properties.name : 'That country') +
+                 ' has no NewsToons yet — maybe you’ll make it one day! ✏️';
+      if (!toast.empty()) {
+        toast.text(msg).style('opacity', 1);
+        clearTimeout(toast.node()._t);
+        toast.node()._t = setTimeout(function () { toast.style('opacity', 0); }, 2600);
+      }
+    }
     sel.append('title').text(function (d) {
       return (d.properties && d.properties.name) || '';
     });
@@ -77,11 +94,20 @@
       projection.rotate([r[0] + dx * k, Math.max(-90, Math.min(90, r[1] - dy * k)), r[2]]);
       render();
     });
-    ['pointerup', 'pointercancel'].forEach(function (t) {
-      node.addEventListener(t, function () {
-        dragging = false; svg.style('cursor', 'grab');
-        setTimeout(function () { dragged = false; }, 0);
-      });
+    node.addEventListener('pointerup', function (ev) {
+      dragging = false; svg.style('cursor', 'grab');
+      try { node.releasePointerCapture(ev.pointerId); } catch (e) {}
+      // Pointer capture retargets the click event to the svg, so country
+      // clicks never fire on the paths — resolve the tap ourselves.
+      if (!dragged) {
+        var el = document.elementFromPoint(ev.clientX, ev.clientY);
+        if (el && el.tagName === 'path') handleCountry(d3.select(el).datum());
+      }
+      setTimeout(function () { dragged = false; }, 0);
+    });
+    node.addEventListener('pointercancel', function () {
+      dragging = false; svg.style('cursor', 'grab');
+      setTimeout(function () { dragged = false; }, 0);
     });
 
     // Gentle idle spin until first touch.
