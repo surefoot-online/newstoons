@@ -29,7 +29,7 @@
   var landG = svg.append('g');
   var toast = d3.select('#globe-toast');
 
-  d3.json('vendor/countries-110m.json').then(function (world) {
+  d3.json((window.NEWSTOONS_ROOT || '') + 'vendor/countries-110m.json').then(function (world) {
     var countries = topojson.feature(world, world.objects.countries).features;
     var sel = landG.selectAll('path').data(countries).enter().append('path')
       .attr('fill', function (d) {
