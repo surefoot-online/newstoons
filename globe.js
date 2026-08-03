@@ -44,7 +44,7 @@
         var e = EDITIONS[+d.id];
         var name = (d.properties && d.properties.name) || '';
         if (!toast.empty()) {
-          toast.text(e ? (e.label + (e.live ? '' : ' · 🌱')) : name)
+          toast.text(name + (e ? (e.live ? ' 📺' : ' · 🌱') : ''))
                .style('opacity', 1);
           clearTimeout(toast.node()._t);
         }
@@ -93,7 +93,7 @@
       .style('font-size', '14px').style('pointer-events', 'none');
     markers.on('mouseover', function (event, m) {
       if (dragging || toast.empty()) return;
-      toast.text(m.e.label + (m.e.live ? '' : ' · 🌱')).style('opacity', 1);
+      toast.text(m.e.name + (m.e.live ? ' 📺' : ' · 🌱')).style('opacity', 1);
       clearTimeout(toast.node()._t);
     }).on('mouseout', function () {
       if (toast.empty()) return;
