@@ -86,3 +86,14 @@ footer a { color: #1d5fd6; }
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
 }
+
+/* listen buttons */
+figure { position: relative; }
+.listen {
+  position: absolute; right: 0.8rem; bottom: 0.8rem;
+  border: 0; cursor: pointer; font-family: inherit;
+  background: #ffffffee; color: #1d5fd6; font-weight: 800;
+  padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.listen.playing { background: #ffd94d; color: #23324a; }

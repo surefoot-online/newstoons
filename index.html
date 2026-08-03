@@ -75,6 +75,29 @@
   </a>
 </div>
 </main>
+<script>
+document.addEventListener('click', function (ev) {
+  var btn = ev.target.closest('.listen');
+  if (!btn) return;
+  var current = document.querySelector('audio[data-live]');
+  if (current) {
+    var was = current.dataset.src === btn.dataset.audio;
+    current.pause(); current.remove();
+    document.querySelectorAll('.listen.playing').forEach(function (b) {
+      b.classList.remove('playing'); b.textContent = '🔊 Listen';
+    });
+    if (was) return;
+  }
+  var a = new Audio(btn.dataset.audio);
+  a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
+  document.body.appendChild(a);
+  btn.classList.add('playing'); btn.textContent = '⏸️ Playing…';
+  a.onended = function () {
+    btn.classList.remove('playing'); btn.textContent = '🔊 Listen'; a.remove();
+  };
+  a.play();
+});
+</script>
 <footer>
   <p>Adapted for kids from reporting by NBC Nightly News. NewsToons is an independent family project and is not affiliated with or endorsed by NBC.</p>
   <p>Episodes © the Family M-Team, licensed
