@@ -1,0 +1,88 @@
+/* NewsToons — kid-friendly, bright, big touch targets */
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: "Comic Sans MS", "Chalkboard SE", "Segoe UI", system-ui, sans-serif;
+  background: #eaf4ff;
+  color: #23324a;
+  line-height: 1.4;
+}
+header { text-align: center; padding: 1.6rem 1rem 0.6rem; }
+.masthead {
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 0 #ffffff;
+}
+.masthead .news  { color: #1d5fd6; }
+.masthead .toons { color: #ff7a1a; }
+.tagline { color: #4a5a75; margin-top: 0.2rem; font-size: 1.05rem; }
+.ages {
+  display: inline-block; margin-top: 0.5rem; padding: 0.25rem 0.9rem;
+  background: #ffd94d; border-radius: 999px; font-weight: 700; font-size: 0.9rem;
+}
+main { max-width: 960px; margin: 0 auto; padding: 1.2rem; }
+
+/* index grid */
+.grid {
+  display: grid; gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+.card {
+  background: #ffffff; border-radius: 18px; overflow: hidden;
+  text-decoration: none; color: inherit;
+  box-shadow: 0 4px 14px rgba(29, 95, 214, 0.13);
+  transition: transform 0.15s ease;
+  border: 3px solid transparent;
+}
+.card:hover, .card:focus-visible { transform: translateY(-4px) scale(1.01); border-color: #ff7a1a; }
+.card img { width: 100%; height: auto; display: block; }
+.cardbody { padding: 0.8rem 1rem 1rem; }
+.epnum {
+  display: inline-block; background: #1d5fd6; color: #ffffff;
+  border-radius: 999px; padding: 0.1rem 0.7rem; font-size: 0.8rem; font-weight: 700;
+}
+.cardbody h2 { font-size: 1.1rem; margin: 0.45rem 0 0.25rem; }
+.date { color: #6a7a95; font-size: 0.85rem; }
+
+/* episode page */
+.episode h1 { text-align: center; font-size: clamp(1.3rem, 4.5vw, 1.9rem); margin-bottom: 0.4rem; }
+.meta { text-align: center; color: #4a5a75; margin-bottom: 0.4rem; }
+.badge {
+  background: #1d5fd6; color: #ffffff; border-radius: 999px;
+  padding: 0.12rem 0.7rem; font-size: 0.8rem; font-weight: 700;
+}
+.chips { text-align: center; margin-bottom: 1rem; }
+.chip {
+  display: inline-block; margin: 0.15rem; padding: 0.18rem 0.7rem;
+  border: 2px solid #b9d2f5; border-radius: 999px;
+  font-size: 0.8rem; color: #1d5fd6; background: #ffffff;
+}
+figure { margin: 0 0 1.1rem; }
+figure img {
+  width: 100%; height: auto; display: block;
+  border-radius: 14px; box-shadow: 0 4px 14px rgba(29, 95, 214, 0.15);
+  background: #ffffff;
+}
+.epnav {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 0.6rem; margin: 1.4rem 0 0.6rem; flex-wrap: wrap;
+}
+.btn {
+  background: #ff7a1a; color: #ffffff; text-decoration: none; font-weight: 800;
+  padding: 0.7rem 1.2rem; border-radius: 999px; font-size: 1rem;
+  box-shadow: 0 3px 0 #d95f00;
+}
+.btn:active { transform: translateY(2px); box-shadow: none; }
+.btn.home { background: #1d5fd6; box-shadow: 0 3px 0 #143f8f; }
+
+footer {
+  text-align: center; color: #6a7a95; font-size: 0.8rem;
+  padding: 1.6rem 1rem 2.2rem; max-width: 760px; margin: 0 auto;
+}
+footer p { margin-bottom: 0.4rem; }
+footer a { color: #1d5fd6; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
