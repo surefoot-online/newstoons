@@ -32,6 +32,7 @@
 </main>
 <script>
 window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.NEWSTOONS_PAGE_KEY = 'page:en-US:ep1';
 window.newstoonsTap = function (key) {
   try {
     fetch(window.NEWSTOONS_TELEMETRY, {
@@ -41,6 +42,7 @@ window.newstoonsTap = function (key) {
     }).catch(function () {});
   } catch (e) {}
 };
+if (window.NEWSTOONS_PAGE_KEY) window.newstoonsTap(window.NEWSTOONS_PAGE_KEY);
 document.addEventListener('click', function (ev) {
   var btn = ev.target.closest('.listen');
   if (!btn) return;
