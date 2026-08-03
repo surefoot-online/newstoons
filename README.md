@@ -1,6 +1,6 @@
 # NewsToons 📺
 
-**Today's news, tomorrow's adventure.** The day's news, redrawn as a friendly six-panel comic for kids ages 6–10 — starring Priya, Miles, and Sprocket the robot.
+**Today's news, tomorrow's adventure.** The day's news, redrawn as a friendly six-panel comic for kids of all ages — starring Priya, Miles, and Sprocket the robot.
 
 **Read the episodes: https://surefoot-online.github.io/newstoons/**
 
