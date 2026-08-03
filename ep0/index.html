@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons — the news, drawn for kids — Episode 0</title>
 <meta name="description" content="Episode 0: Firefighter Friends & Weather Watchers">
-<link rel="stylesheet" href="../style.css?v=b3a41781">
+<link rel="stylesheet" href="../style.css?v=8d6a8150">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -21,20 +21,31 @@
   <p class="meta"><span class="badge">NBC Nightly News</span>
      2026-07-26 · Priya, Miles, and Sprocket</p>
   <p class="chips"><span class="chip">Europe wildfires international response</span><span class="chip">U.S. heat wave and storm preparedness</span></p>
-  <figure><img src="../assets/ep0/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel1.mp3" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
-<figure><img src="../assets/ep0/panel2.webp" alt="Panel 2: Big Fires in Europe" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel2.mp3" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
-<figure><img src="../assets/ep0/panel3.webp" alt="Panel 3: Friends From Many Lands" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel3.mp3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
-<figure><img src="../assets/ep0/panel4.webp" alt="Panel 4: A Very, Very Hot Day" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel4.mp3" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
-<figure><img src="../assets/ep0/panel5.webp" alt="Panel 5: The Weather Watchers" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel5.mp3" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
-<figure><img src="../assets/ep0/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel6.mp3" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
+  <figure><img src="../assets/ep0/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel1.mp3" data-tap="listen:en-US:ep0:p1" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
+<figure><img src="../assets/ep0/panel2.webp" alt="Panel 2: Big Fires in Europe" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel2.mp3" data-tap="listen:en-US:ep0:p2" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
+<figure><img src="../assets/ep0/panel3.webp" alt="Panel 3: Friends From Many Lands" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel3.mp3" data-tap="listen:en-US:ep0:p3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
+<figure><img src="../assets/ep0/panel4.webp" alt="Panel 4: A Very, Very Hot Day" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel4.mp3" data-tap="listen:en-US:ep0:p4" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
+<figure><img src="../assets/ep0/panel5.webp" alt="Panel 5: The Weather Watchers" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel5.mp3" data-tap="listen:en-US:ep0:p5" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
+<figure><img src="../assets/ep0/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep0/panel6.mp3" data-tap="listen:en-US:ep0:p6" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
 
   <nav class="epnav"><span></span><a class="btn home" href="../index.html">Episodes 🏠</a><a class="btn" href="../ep1/">Episode 1 ➡️</a></nav>
 </article>
 </main>
 <script>
+window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.newstoonsTap = function (key) {
+  try {
+    fetch(window.NEWSTOONS_TELEMETRY, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ k: key }),
+    }).catch(function () {});
+  } catch (e) {}
+};
 document.addEventListener('click', function (ev) {
   var btn = ev.target.closest('.listen');
   if (!btn) return;
+  if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
   var current = document.querySelector('audio[data-live]');
   if (current) {
     var was = current.dataset.src === btn.dataset.audio;

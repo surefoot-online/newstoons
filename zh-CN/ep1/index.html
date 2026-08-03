@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons 中国 — 画给孩子看的新闻 — 第 1 集</title>
 <meta name="description" content="第 1 集: 草方格和宇宙超级发射器">
-<link rel="stylesheet" href="../../style.css?v=b3a41781">
+<link rel="stylesheet" href="../../style.css?v=8d6a8150">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -21,20 +21,31 @@
   <p class="meta"><span class="badge">新华社 (Xinhua) — via 《新闻联播》 topic frame</span>
      2026-08-03 · 小梅 and Sprocket</p>
   <p class="chips"><span class="chip">宁夏治沙技术走向世界（中国—中亚荒漠化防治合作）</span><span class="chip">LHAASO发现天鹅座X-3宇宙粒子加速器</span></p>
-  <figure><img src="../assets/ep1/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel1.mp3" data-label="🔊 听一听" aria-label="listen to panel 1">🔊 听一听</button></figure>
-<figure><img src="../assets/ep1/panel2.webp" alt="Panel 2: 沙漠里的神奇格子" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel2.mp3" data-label="🔊 听一听" aria-label="listen to panel 2">🔊 听一听</button></figure>
-<figure><img src="../assets/ep1/panel3.webp" alt="Panel 3: 中国帮助全世界" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel3.mp3" data-label="🔊 听一听" aria-label="listen to panel 3">🔊 听一听</button></figure>
-<figure><img src="../assets/ep1/panel4.webp" alt="Panel 4: 四川山上的超级眼睛" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel4.mp3" data-label="🔊 听一听" aria-label="listen to panel 4">🔊 听一听</button></figure>
-<figure><img src="../assets/ep1/panel5.webp" alt="Panel 5: 宇宙里的超级信号" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel5.mp3" data-label="🔊 听一听" aria-label="listen to panel 5">🔊 听一听</button></figure>
-<figure><img src="../assets/ep1/panel6.webp" alt="Panel 6: Hilltop Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel6.mp3" data-label="🔊 听一听" aria-label="listen to panel 6">🔊 听一听</button></figure>
+  <figure><img src="../assets/ep1/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel1.mp3" data-tap="listen:zh-CN:ep1:p1" data-label="🔊 听一听" aria-label="listen to panel 1">🔊 听一听</button></figure>
+<figure><img src="../assets/ep1/panel2.webp" alt="Panel 2: 沙漠里的神奇格子" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel2.mp3" data-tap="listen:zh-CN:ep1:p2" data-label="🔊 听一听" aria-label="listen to panel 2">🔊 听一听</button></figure>
+<figure><img src="../assets/ep1/panel3.webp" alt="Panel 3: 中国帮助全世界" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel3.mp3" data-tap="listen:zh-CN:ep1:p3" data-label="🔊 听一听" aria-label="listen to panel 3">🔊 听一听</button></figure>
+<figure><img src="../assets/ep1/panel4.webp" alt="Panel 4: 四川山上的超级眼睛" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel4.mp3" data-tap="listen:zh-CN:ep1:p4" data-label="🔊 听一听" aria-label="listen to panel 4">🔊 听一听</button></figure>
+<figure><img src="../assets/ep1/panel5.webp" alt="Panel 5: 宇宙里的超级信号" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel5.mp3" data-tap="listen:zh-CN:ep1:p5" data-label="🔊 听一听" aria-label="listen to panel 5">🔊 听一听</button></figure>
+<figure><img src="../assets/ep1/panel6.webp" alt="Panel 6: Hilltop Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel6.mp3" data-tap="listen:zh-CN:ep1:p6" data-label="🔊 听一听" aria-label="listen to panel 6">🔊 听一听</button></figure>
 
   <nav class="epnav"><span></span><a class="btn home" href="../index.html">所有集数 🏠</a><span></span></nav>
 </article>
 </main>
 <script>
+window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.newstoonsTap = function (key) {
+  try {
+    fetch(window.NEWSTOONS_TELEMETRY, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ k: key }),
+    }).catch(function () {});
+  } catch (e) {}
+};
 document.addEventListener('click', function (ev) {
   var btn = ev.target.closest('.listen');
   if (!btn) return;
+  if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
   var current = document.querySelector('audio[data-live]');
   if (current) {
     var was = current.dataset.src === btn.dataset.audio;

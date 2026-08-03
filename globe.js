@@ -59,6 +59,7 @@
       if (!d) return;
       var e = EDITIONS[+d.id];
       var msg;
+      if (window.newstoonsTap) window.newstoonsTap('globe:' + (+d.id));
       if (e && e.live && e.path) { window.location.href = e.path; return; }
       if (e) msg = e.name + ' NewsToons is sprouting — coming soon! 🌱';
       else msg = (d.properties && d.properties.name ? d.properties.name : 'That country') +

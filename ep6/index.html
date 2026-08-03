@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons — the news, drawn for kids — Episode 6</title>
 <meta name="description" content="Episode 6: A Teen Hero, A Homecoming & Brave Firefighters">
-<link rel="stylesheet" href="../style.css?v=b3a41781">
+<link rel="stylesheet" href="../style.css?v=8d6a8150">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -21,20 +21,31 @@
   <p class="meta"><span class="badge">NBC Nightly News</span>
      2026-08-01 · Priya, Miles, and Sprocket</p>
   <p class="chips"><span class="chip">Teen lifeguard rescue</span><span class="chip">Military homecoming</span><span class="chip">Wildfire fighters</span></p>
-  <figure><img src="../assets/ep6/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel1.mp3" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
-<figure><img src="../assets/ep6/panel2.webp" alt="Panel 2: Hero Lifeguard" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel2.mp3" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
-<figure><img src="../assets/ep6/panel3.webp" alt="Panel 3: Water Safety Tips" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel3.mp3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
-<figure><img src="../assets/ep6/panel4.webp" alt="Panel 4: Homecoming" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel4.mp3" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
-<figure><img src="../assets/ep6/panel5.webp" alt="Panel 5: Brave Firefighters" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel5.mp3" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
-<figure><img src="../assets/ep6/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel6.mp3" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
+  <figure><img src="../assets/ep6/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel1.mp3" data-tap="listen:en-US:ep6:p1" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
+<figure><img src="../assets/ep6/panel2.webp" alt="Panel 2: Hero Lifeguard" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel2.mp3" data-tap="listen:en-US:ep6:p2" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
+<figure><img src="../assets/ep6/panel3.webp" alt="Panel 3: Water Safety Tips" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel3.mp3" data-tap="listen:en-US:ep6:p3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
+<figure><img src="../assets/ep6/panel4.webp" alt="Panel 4: Homecoming" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel4.mp3" data-tap="listen:en-US:ep6:p4" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
+<figure><img src="../assets/ep6/panel5.webp" alt="Panel 5: Brave Firefighters" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel5.mp3" data-tap="listen:en-US:ep6:p5" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
+<figure><img src="../assets/ep6/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep6/panel6.mp3" data-tap="listen:en-US:ep6:p6" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
 
   <nav class="epnav"><a class="btn" href="../ep5/">⬅️ Episode 5</a><a class="btn home" href="../index.html">Episodes 🏠</a><a class="btn" href="../ep7/">Episode 7 ➡️</a></nav>
 </article>
 </main>
 <script>
+window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.newstoonsTap = function (key) {
+  try {
+    fetch(window.NEWSTOONS_TELEMETRY, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ k: key }),
+    }).catch(function () {});
+  } catch (e) {}
+};
 document.addEventListener('click', function (ev) {
   var btn = ev.target.closest('.listen');
   if (!btn) return;
+  if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
   var current = document.querySelector('audio[data-live]');
   if (current) {
     var was = current.dataset.src === btn.dataset.audio;
