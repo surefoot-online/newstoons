@@ -46,7 +46,57 @@ window.newstoonsTap = function (key) {
     }).catch(function () {});
   } catch (e) {}
 };
-if (window.NEWSTOONS_PAGE_KEY) window.newstoonsTap(window.NEWSTOONS_PAGE_KEY);
+/* Journey shapes — aggregate only. sessionStorage lives until the tab closes,
+   holds no identifier, and is never transmitted: we send counters, not people. */
+(function () {
+  var K = window.NEWSTOONS_PAGE_KEY;
+  if (!K) return;
+  var here = K.slice(5); // strip "page:"
+  var S = window.sessionStorage;
+  var prev, count, ss = true;
+  try { prev = S.getItem('nt_prev'); count = parseInt(S.getItem('nt_count') || '0', 10); }
+  catch (e) { ss = false; count = 0; }
+
+  window.newstoonsTap(K);
+  if (!ss) return;
+
+  if (!prev) {
+    window.newstoonsTap('entry:' + here);
+    var ref = document.referrer || '';
+    if (ref && ref.indexOf(location.host) === -1) window.newstoonsTap('flow:external>' + here);
+  } else if (prev !== here) {
+    window.newstoonsTap('flow:' + prev + '>' + here);
+  }
+
+  count += 1;
+  try { S.setItem('nt_prev', here); S.setItem('nt_count', String(count)); } catch (e) {}
+
+  // Depth + exit are reported when the visit's last page goes away.
+  var sent = false;
+  function closeOut() {
+    if (sent) return; sent = true;
+    var n = 1;
+    try { n = parseInt(S.getItem('nt_count') || '1', 10); } catch (e) {}
+    window.newstoonsTap('depth:' + (n >= 5 ? '5plus' : String(n)));
+    window.newstoonsTap('exit:' + here);
+  }
+  window.addEventListener('pagehide', closeOut);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') closeOut();
+  });
+
+  // Per-episode funnel: opened -> listened -> rated (each once per visit).
+  if (/:ep[0-9]+$/.test(here)) {
+    var fk = 'funnel:' + here + ':';
+    var mark = function (stage) {
+      var flag = 'nt_f_' + here + '_' + stage;
+      try { if (S.getItem(flag)) return; S.setItem(flag, '1'); } catch (e) {}
+      window.newstoonsTap(fk + stage);
+    };
+    mark('opened');
+    window.newstoonsFunnel = mark;
+  }
+})();
 document.addEventListener('click', function (ev) {
   var face = ev.target.closest('.face');
   if (face) {
@@ -54,6 +104,7 @@ document.addEventListener('click', function (ev) {
     if (box && !box.dataset.done) {
       box.dataset.done = '1';
       window.newstoonsTap(box.dataset.ep + ':' + face.dataset.rate);
+      if (window.newstoonsFunnel) window.newstoonsFunnel('rated');
       box.querySelectorAll('.face').forEach(function (f) { f.classList.remove('chosen'); });
       face.classList.add('chosen');
       var t = box.querySelector('.rate-thanks');
@@ -64,6 +115,7 @@ document.addEventListener('click', function (ev) {
   var btn = ev.target.closest('.listen');
   if (!btn) return;
   if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
+  if (window.newstoonsFunnel) window.newstoonsFunnel('listened');
   var current = document.querySelector('audio[data-live]');
   if (current) {
     var was = current.dataset.src === btn.dataset.audio;
