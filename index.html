@@ -15,7 +15,17 @@
   <p class="ages">For kids of all ages</p>
 </header>
 <main>
-<h1 class="visually-hidden">Episodes</h1>
+
+<section class="globe-section">
+  <h1>Spin the globe — pick your NewsToons country! 🌍</h1>
+  <div id="globe"></div>
+  <div id="globe-toast" role="status"></div>
+  <p class="lang-buttons">
+    <a class="btn home" href="./">English 🇺🇸</a>
+    <a class="btn soon" href="#" onclick="return false">中文 🇹🇼 · coming soon 🌱</a>
+  </p>
+</section>
+<h2 class="grid-title">Episodes</h2>
 <div class="grid">
   <a class="card" href="ep7/">
     <img src="assets/ep7/thumb.webp" alt="Episode 7 cover" loading="lazy" width="480" height="360">
@@ -106,6 +116,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
+<script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js"></script>
 <footer>
   <p>Adapted for kids from reporting by NBC Nightly News. NewsToons is an independent family project and is not affiliated with or endorsed by NBC.</p>
   <p>Episodes © the Family M-Team, licensed

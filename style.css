@@ -97,3 +97,16 @@ figure { position: relative; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 .listen.playing { background: #ffd94d; color: #23324a; }
+
+/* globe chooser */
+.globe-section { text-align: center; margin-bottom: 1.6rem; }
+.globe-section h1 { font-size: clamp(1.2rem, 4vw, 1.7rem); margin-bottom: 0.8rem; }
+#globe { display: flex; justify-content: center; }
+#globe svg { user-select: none; -webkit-user-select: none; }
+#globe-toast {
+  min-height: 1.6rem; margin-top: 0.5rem; font-weight: 700; color: #1d5fd6;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.lang-buttons { margin-top: 0.6rem; display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+.btn.soon { background: #ffd94d; color: #23324a; box-shadow: 0 3px 0 #d9b425; cursor: default; }
+.grid-title { text-align: center; margin: 0.4rem 0 1rem; font-size: 1.4rem; }
