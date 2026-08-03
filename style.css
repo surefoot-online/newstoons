@@ -110,3 +110,4 @@ figure { position: relative; }
 .lang-buttons { margin-top: 0.6rem; display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
 .btn.soon { background: #ffd94d; color: #23324a; box-shadow: 0 3px 0 #d9b425; cursor: default; }
 .grid-title { text-align: center; margin: 0.4rem 0 1rem; font-size: 1.4rem; }
+.sponsors { font-weight: 700; color: #4a5a75; }
