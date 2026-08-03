@@ -72,9 +72,47 @@
     sel.append('title').text(function (d) {
       return (d.properties && d.properties.name) || '';
     });
+
+    // Big tappable markers on edition countries — small islands like Taiwan
+    // are only a few pixels of land, so give every edition a proper pin.
+    var byId = {};
+    countries.forEach(function (c) { byId[+c.id] = c; });
+    var markerData = Object.keys(EDITIONS).map(function (k) {
+      var c = byId[+k];
+      return c ? { id: +k, e: EDITIONS[+k], centroid: d3.geoCentroid(c), country: c } : null;
+    }).filter(Boolean);
+    var markers = svg.append('g').selectAll('g').data(markerData)
+      .enter().append('g')
+      .attr('class', 'edition-marker')
+      .style('cursor', 'pointer');
+    markers.append('circle').attr('r', 13)
+      .attr('fill', function (m) { return m.e.live ? '#1e8a3c' : '#ffd94d'; })
+      .attr('stroke', '#ffffff').attr('stroke-width', 2.5);
+    markers.append('text').text('📺')
+      .attr('text-anchor', 'middle').attr('dy', '0.35em')
+      .style('font-size', '14px').style('pointer-events', 'none');
+    markers.on('mouseover', function (event, m) {
+      if (dragging || toast.empty()) return;
+      toast.text(m.e.label + (m.e.live ? '' : ' · 🌱')).style('opacity', 1);
+      clearTimeout(toast.node()._t);
+    }).on('mouseout', function () {
+      if (toast.empty()) return;
+      clearTimeout(toast.node()._t);
+      toast.node()._t = setTimeout(function () { toast.style('opacity', 0); }, 400);
+    });
+
     render();
 
-    function render() { landG.selectAll('path').attr('d', path); }
+    function render() {
+      landG.selectAll('path').attr('d', path);
+      var r = projection.rotate();
+      markers.attr('transform', function (m) {
+        var p = projection(m.centroid);
+        return 'translate(' + p[0] + ',' + p[1] + ')';
+      }).style('display', function (m) {
+        return d3.geoDistance(m.centroid, [-r[0], -r[1]]) < Math.PI / 2 ? null : 'none';
+      });
+    }
 
     // Drag to rotate (pointer events cover mouse + touch).
     var dragging = false, dragged = false, last = null;
@@ -101,7 +139,13 @@
       // clicks never fire on the paths — resolve the tap ourselves.
       if (!dragged) {
         var el = document.elementFromPoint(ev.clientX, ev.clientY);
-        if (el && el.tagName === 'path') handleCountry(d3.select(el).datum());
+        var markerEl = el && el.closest ? el.closest('.edition-marker') : null;
+        if (markerEl) {
+          var m = d3.select(markerEl).datum();
+          if (m) handleCountry(m.country);
+        } else if (el && el.tagName === 'path') {
+          handleCountry(d3.select(el).datum());
+        }
       }
       setTimeout(function () { dragged = false; }, 0);
     });
