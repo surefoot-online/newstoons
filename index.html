@@ -20,15 +20,12 @@
   <h1>Spin the globe — pick your NewsToons country! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <p class="lang-buttons">
-    <a class="btn home" href="./">English 🇺🇸</a>
-    <a class="btn soon" href="#" onclick="return false">中文 🇹🇼 · coming soon 🌱</a>
-  </p>
+  <p class="lang-buttons"><a class="btn home" href="./">English 🇺🇸</a><a class="btn home" href="zh-TW/">中文（台灣）🇹🇼</a><a class="btn home" href="zh-CN/">中文（大陆）🇨🇳</a></p>
 </section>
 <h2 class="grid-title">Episodes</h2>
 <div class="grid">
   <a class="card" href="ep7/">
-    <img src="assets/ep7/thumb.webp" alt="Episode 7 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep7/thumb.webp" alt="Episode 7" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 7</span>
       <h2>Heat, Heroes &amp; Helping Hands</h2>
@@ -36,7 +33,7 @@
     </div>
   </a>
   <a class="card" href="ep6/">
-    <img src="assets/ep6/thumb.webp" alt="Episode 6 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep6/thumb.webp" alt="Episode 6" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 6</span>
       <h2>A Teen Hero, A Homecoming &amp; Brave Firefighters</h2>
@@ -44,7 +41,7 @@
     </div>
   </a>
   <a class="card" href="ep5/">
-    <img src="assets/ep5/thumb.webp" alt="Episode 5 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep5/thumb.webp" alt="Episode 5" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 5</span>
       <h2>Floods, Sharks &amp; Stars</h2>
@@ -52,7 +49,7 @@
     </div>
   </a>
   <a class="card" href="ep4/">
-    <img src="assets/ep4/thumb.webp" alt="Episode 4 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep4/thumb.webp" alt="Episode 4" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 4</span>
       <h2>Earthquake, Floods &amp; A Doctor&#x27;s Gift</h2>
@@ -60,7 +57,7 @@
     </div>
   </a>
   <a class="card" href="ep3/">
-    <img src="assets/ep3/thumb.webp" alt="Episode 3 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep3/thumb.webp" alt="Episode 3" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 3</span>
       <h2>Pope Leo&#x27;s Concert &amp; East Coast Storms</h2>
@@ -68,7 +65,7 @@
     </div>
   </a>
   <a class="card" href="ep2/">
-    <img src="assets/ep2/thumb.webp" alt="Episode 2 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep2/thumb.webp" alt="Episode 2" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 2</span>
       <h2>Peace, Storms &amp; Garden Magic</h2>
@@ -76,7 +73,7 @@
     </div>
   </a>
   <a class="card" href="ep1/">
-    <img src="assets/ep1/thumb.webp" alt="Episode 1 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep1/thumb.webp" alt="Episode 1" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 1</span>
       <h2>Heroes in the Storm</h2>
@@ -84,7 +81,7 @@
     </div>
   </a>
   <a class="card" href="ep0/">
-    <img src="assets/ep0/thumb.webp" alt="Episode 0 cover" loading="lazy" width="480" height="360">
+    <img src="assets/ep0/thumb.webp" alt="Episode 0" loading="lazy" width="480" height="360">
     <div class="cardbody">
       <span class="epnum">Episode 0</span>
       <h2>Firefighter Friends &amp; Weather Watchers</h2>
@@ -102,21 +99,21 @@ document.addEventListener('click', function (ev) {
     var was = current.dataset.src === btn.dataset.audio;
     current.pause(); current.remove();
     document.querySelectorAll('.listen.playing').forEach(function (b) {
-      b.classList.remove('playing'); b.textContent = '🔊 Listen';
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
     });
     if (was) return;
   }
   var a = new Audio(btn.dataset.audio);
   a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
   document.body.appendChild(a);
-  btn.classList.add('playing'); btn.textContent = '⏸️ Playing…';
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
   a.onended = function () {
-    btn.classList.remove('playing'); btn.textContent = '🔊 Listen'; a.remove();
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
   };
   a.play();
 });
 </script>
-<script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js"></script>
+<script>window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "English \ud83c\uddfa\ud83c\uddf8", "path": "./", "live": true}, "158": {"name": "Taiwan", "label": "\u4e2d\u6587\uff08\u53f0\u7063\uff09\ud83c\uddf9\ud83c\uddfc", "path": "zh-TW/", "live": true}, "156": {"name": "China", "label": "\u4e2d\u6587\uff08\u5927\u9646\uff09\ud83c\udde8\ud83c\uddf3", "path": "zh-CN/", "live": true}};</script><script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js"></script>
 <footer>
   <p>Adapted for kids from reporting by NBC Nightly News. NewsToons is an independent family project and is not affiliated with or endorsed by NBC.</p>
   <p>Episodes © the Family M-Team, licensed

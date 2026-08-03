@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NewsToons 台灣 — 畫給孩子看的新聞</title>
+<meta name="description" content="台灣的新聞，畫成孩子看得懂的漫畫。">
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+</head>
+<body>
+<header>
+  <a class="masthead" href="index.html"><span class="news">News</span><span class="toons">Toons</span></a>
+  <p class="tagline">今天的新聞，明天的冒險 ✏️✨</p>
+  <p class="ages">給所有年齡的孩子</p>
+</header>
+<main>
+<p class="lang-buttons"><a class="btn home" href="../index.html">🌍 其他國家的 NewsToons</a></p>
+<h2 class="grid-title">所有集數</h2>
+<div class="grid">
+  <a class="card" href="ep1/">
+    <img src="assets/ep1/thumb.webp" alt="第 1 集" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <span class="epnum">第 1 集</span>
+      <h2>颱風來了！梅花鹿回家了！</h2>
+      <p class="date">2026-08-03</p>
+    </div>
+  </a>
+</div>
+</main>
+<script>
+document.addEventListener('click', function (ev) {
+  var btn = ev.target.closest('.listen');
+  if (!btn) return;
+  var current = document.querySelector('audio[data-live]');
+  if (current) {
+    var was = current.dataset.src === btn.dataset.audio;
+    current.pause(); current.remove();
+    document.querySelectorAll('.listen.playing').forEach(function (b) {
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
+    });
+    if (was) return;
+  }
+  var a = new Audio(btn.dataset.audio);
+  a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
+  document.body.appendChild(a);
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
+  a.onended = function () {
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
+  };
+  a.play();
+});
+</script>
+
+<footer>
+  <p>內容改編自公視新聞的報導，適合兒童閱讀。NewsToons 是獨立的家庭專案，與公視或任何新聞機構沒有隸屬或背書關係。</p>
+  <p>Episodes © the Family M-Team, licensed
+     <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">CC BY-NC-ND 4.0</a>
+     — share freely with credit; no commercial use, no remixes.</p>
+  <p class="sponsors">NewsToons is made possible by <a href="https://bloome.im" rel="sponsored noopener" target="_blank"><strong>Bloome</strong></a> and <a href="https://mulerun.com" rel="sponsored noopener" target="_blank"><strong>MuleRun</strong></a>.</p>
+  <p>Made with ❤️ by the Family M-Team.</p>
+</footer>
+</body>
+</html>

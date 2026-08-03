@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NewsToons — Episode 1: Heroes in the Storm</title>
-<meta name="description" content="NewsToons episode 1 for kids: Heroes in the Storm">
+<title>NewsToons — the news, drawn for kids — Episode 1</title>
+<meta name="description" content="Episode 1: Heroes in the Storm">
 <link rel="stylesheet" href="../style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
@@ -19,15 +19,15 @@
 <article class="episode">
   <h1>Episode 1: Heroes in the Storm</h1>
   <p class="meta"><span class="badge">NBC Nightly News</span>
-     2026-07-27 · by Priya, Miles, and Sprocket</p>
+     2026-07-27 · Priya, Miles, and Sprocket</p>
   <p class="chips"><span class="chip">Storm response</span><span class="chip">Firefighter kidney donation</span></p>
-  <figure><img src="../assets/ep1/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel1.mp3" aria-label="Listen to panel 1">🔊 Listen</button></figure>
-<figure><img src="../assets/ep1/panel2.webp" alt="Panel 2: Wisconsin Tornado" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel2.mp3" aria-label="Listen to panel 2">🔊 Listen</button></figure>
-<figure><img src="../assets/ep1/panel3.webp" alt="Panel 3: Community Response" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel3.mp3" aria-label="Listen to panel 3">🔊 Listen</button></figure>
-<figure><img src="../assets/ep1/panel4.webp" alt="Panel 4: Firefighter&#x27;s Gift" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel4.mp3" aria-label="Listen to panel 4">🔊 Listen</button></figure>
-<figure><img src="../assets/ep1/panel5.webp" alt="Panel 5: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel5.mp3" aria-label="Listen to panel 5">🔊 Listen</button></figure>
+  <figure><img src="../assets/ep1/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel1.mp3" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
+<figure><img src="../assets/ep1/panel2.webp" alt="Panel 2: Wisconsin Tornado" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel2.mp3" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
+<figure><img src="../assets/ep1/panel3.webp" alt="Panel 3: Community Response" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel3.mp3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
+<figure><img src="../assets/ep1/panel4.webp" alt="Panel 4: Firefighter&#x27;s Gift" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel4.mp3" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
+<figure><img src="../assets/ep1/panel5.webp" alt="Panel 5: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep1/panel5.mp3" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
 
-  <nav class="epnav"><a class="btn" href="../ep0/">⬅️ Episode 0</a><a class="btn home" href="../index.html">All episodes 🏠</a><a class="btn" href="../ep2/">Episode 2 ➡️</a></nav>
+  <nav class="epnav"><a class="btn" href="../ep0/">⬅️ Episode 0</a><a class="btn home" href="../index.html">Episodes 🏠</a><a class="btn" href="../ep2/">Episode 2 ➡️</a></nav>
 </article>
 </main>
 <script>
@@ -39,16 +39,16 @@ document.addEventListener('click', function (ev) {
     var was = current.dataset.src === btn.dataset.audio;
     current.pause(); current.remove();
     document.querySelectorAll('.listen.playing').forEach(function (b) {
-      b.classList.remove('playing'); b.textContent = '🔊 Listen';
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
     });
     if (was) return;
   }
   var a = new Audio(btn.dataset.audio);
   a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
   document.body.appendChild(a);
-  btn.classList.add('playing'); btn.textContent = '⏸️ Playing…';
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
   a.onended = function () {
-    btn.classList.remove('playing'); btn.textContent = '🔊 Listen'; a.remove();
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
   };
   a.play();
 });

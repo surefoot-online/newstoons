@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NewsToons — Episode 5: Floods, Sharks & Stars</title>
-<meta name="description" content="NewsToons episode 5 for kids: Floods, Sharks & Stars">
+<title>NewsToons — the news, drawn for kids — Episode 5</title>
+<meta name="description" content="Episode 5: Floods, Sharks & Stars">
 <link rel="stylesheet" href="../style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
@@ -19,16 +19,16 @@
 <article class="episode">
   <h1>Episode 5: Floods, Sharks &amp; Stars</h1>
   <p class="meta"><span class="badge">NBC Nightly News</span>
-     2026-07-31 · by Priya, Miles, and Sprocket</p>
+     2026-07-31 · Priya, Miles, and Sprocket</p>
   <p class="chips"><span class="chip">NE flash flooding</span><span class="chip">Shark-spotting drones</span><span class="chip">Space launch delay</span></p>
-  <figure><img src="../assets/ep5/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel1.mp3" aria-label="Listen to panel 1">🔊 Listen</button></figure>
-<figure><img src="../assets/ep5/panel2.webp" alt="Panel 2: Flash Flooding" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel2.mp3" aria-label="Listen to panel 2">🔊 Listen</button></figure>
-<figure><img src="../assets/ep5/panel3.webp" alt="Panel 3: Community Rescues" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel3.mp3" aria-label="Listen to panel 3">🔊 Listen</button></figure>
-<figure><img src="../assets/ep5/panel4.webp" alt="Panel 4: Shark-Spotting Drones" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel4.mp3" aria-label="Listen to panel 4">🔊 Listen</button></figure>
-<figure><img src="../assets/ep5/panel5.webp" alt="Panel 5: Space Launch Wait" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel5.mp3" aria-label="Listen to panel 5">🔊 Listen</button></figure>
-<figure><img src="../assets/ep5/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel6.mp3" aria-label="Listen to panel 6">🔊 Listen</button></figure>
+  <figure><img src="../assets/ep5/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel1.mp3" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
+<figure><img src="../assets/ep5/panel2.webp" alt="Panel 2: Flash Flooding" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel2.mp3" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
+<figure><img src="../assets/ep5/panel3.webp" alt="Panel 3: Community Rescues" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel3.mp3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
+<figure><img src="../assets/ep5/panel4.webp" alt="Panel 4: Shark-Spotting Drones" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel4.mp3" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
+<figure><img src="../assets/ep5/panel5.webp" alt="Panel 5: Space Launch Wait" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel5.mp3" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
+<figure><img src="../assets/ep5/panel6.webp" alt="Panel 6: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep5/panel6.mp3" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
 
-  <nav class="epnav"><a class="btn" href="../ep4/">⬅️ Episode 4</a><a class="btn home" href="../index.html">All episodes 🏠</a><a class="btn" href="../ep6/">Episode 6 ➡️</a></nav>
+  <nav class="epnav"><a class="btn" href="../ep4/">⬅️ Episode 4</a><a class="btn home" href="../index.html">Episodes 🏠</a><a class="btn" href="../ep6/">Episode 6 ➡️</a></nav>
 </article>
 </main>
 <script>
@@ -40,16 +40,16 @@ document.addEventListener('click', function (ev) {
     var was = current.dataset.src === btn.dataset.audio;
     current.pause(); current.remove();
     document.querySelectorAll('.listen.playing').forEach(function (b) {
-      b.classList.remove('playing'); b.textContent = '🔊 Listen';
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
     });
     if (was) return;
   }
   var a = new Audio(btn.dataset.audio);
   a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
   document.body.appendChild(a);
-  btn.classList.add('playing'); btn.textContent = '⏸️ Playing…';
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
   a.onended = function () {
-    btn.classList.remove('playing'); btn.textContent = '🔊 Listen'; a.remove();
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
   };
   a.play();
 });
