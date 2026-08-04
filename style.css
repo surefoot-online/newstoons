@@ -135,3 +135,6 @@ figure { text-align: center; }
 .sponsorpage ul { padding-left: 1.2rem; }
 .sponsorpage .contact { margin-top: 1.2rem; font-weight: 700; }
 .ainotice { font-weight: 700; color: #4a5a75; }
+table.sources { width: 100%; border-collapse: collapse; margin: 0.8rem 0 1rem; }
+table.sources th, table.sources td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 2px solid #dbe9fb; vertical-align: top; }
+table.sources th { color: #1d5fd6; }

@@ -1,42 +1,40 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NewsToons 中国 — 画给孩子看的新闻</title>
-<meta name="description" content="中国的新闻，画成孩子看得懂的漫画。">
+<title>NewsToons — Our news sources</title>
+<meta name="description" content="Which newsrooms each NewsToons edition draws on, and our non-affiliation notice.">
 <link rel="stylesheet" href="../style.css?v=eaf63b5e">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
 <header>
-  <a class="masthead" href="index.html"><span class="news">News</span><span class="toons">Toons</span></a>
-  <p class="tagline">今天的新闻，明天的冒险 ✏️✨</p>
-  <p class="ages">给所有年龄的孩子</p>
+  <a class="masthead" href="../index.html"><span class="news">News</span><span class="toons">Toons</span></a>
+  <p class="tagline">Today's news, tomorrow's adventure ✏️✨</p>
+  <p class="ages">For kids of all ages</p>
 </header>
 <main>
 
-<section class="globe-section">
-  <h1>转一转地球，选你的 NewsToons 国家！🌍</h1>
-  <div id="globe"></div>
-  <div id="globe-toast" role="status"></div>
-  <p class="lang-buttons"><a class="btn home" href="../">United States (English) 🇺🇸</a><a class="btn home" href="../zh-TW/">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./">China (简体中文) 🇨🇳</a><a class="btn soon" href="#" onclick="return false">Deutschland (Deutsch) 🇩🇪 · 🌱</a></p>
-</section>
-<h2 class="grid-title">所有集数</h2>
-<div class="grid">
-  <a class="card" href="ep1/">
-    <img src="assets/ep1/thumb.webp" alt="第 1 集" loading="lazy" width="480" height="360">
-    <div class="cardbody">
-      <span class="epnum">第 1 集</span>
-      <h2>草方格和宇宙超级发射器</h2>
-      <p class="date">2026-08-03</p>
-    </div>
-  </a>
-</div>
+<article class="episode sponsorpage">
+  <h1>Our news sources 📰</h1>
+  <p class="lead">Every NewsToons episode retells real reporting in words and
+     pictures a child can follow. Each edition draws on its own country's news,
+     and every fact is checked against the original report before it is drawn.</p>
+  <table class="sources"><thead><tr><th>Edition</th><th>Sources</th></tr></thead>
+  <tbody><tr><td>Deutschland (Deutsch) 🇩🇪</td><td><a href="https://www.tagesschau.de" rel="noopener">Deutsche Nachrichtenmedien (Tagesschau, ZDF, dpa)</a> · also checked against ZDF heute, Spiegel Online, dpa</td></tr><tr><td>United States (English) 🇺🇸</td><td><a href="https://www.nbcnews.com/nightly-news" rel="noopener">NBC Nightly News</a></td></tr><tr><td>China (简体中文) 🇨🇳</td><td><a href="https://tv.cctv.com/lm/xwlb/" rel="noopener">《新闻联播》 (CCTV)</a></td></tr><tr><td>Taiwan (繁體中文) 🇹🇼</td><td><a href="https://news.pts.org.tw" rel="noopener">公視新聞 (PTS News)</a> · also checked against 台視, 中視, 華視</td></tr></tbody></table>
+  <p>We name our sources in text, and never display their logos or brand marks:
+     those belong to the newsrooms that earned them. <strong>NewsToons is an
+     independent family project and is not affiliated with, sponsored by, or
+     endorsed by any of the organisations listed here.</strong></p>
+  <p>Each episode also keeps a public record of exactly which articles it drew
+     on — see the <code>sources.md</code> file beside every episode in our
+     <a href="https://github.com/surefoot-online/newstoons">archive</a>.</p>
+</article>
 </main>
 <script>
 window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
-window.NEWSTOONS_PAGE_KEY = 'page:zh-CN:home';
+window.NEWSTOONS_PAGE_KEY = '';
 window.newstoonsTap = function (key) {
   try {
     fetch(window.NEWSTOONS_TELEMETRY, {
@@ -135,10 +133,10 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "../", "live": true}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "../zh-TW/", "live": true}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./", "live": true}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false}};</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=eaf63b5e"></script>
+
 <footer>
-  <p class="ainotice">🤖 图画与配音由 AI 生成。故事由人和 AI 一起编写，每个事实都会对照真实新闻核实。 再仔细核实，也可能有疏漏——觉得不对劲，就告诉大人，一起去看看原来的新闻。</p>
-  <p>内容改编自真实新闻报道，适合儿童阅读。NewsToons 是独立的家庭项目，与任何新闻机构没有隶属关系。 <a href="../sources/">我们的新闻来源 →</a></p>
+  <p class="ainotice">🤖 Art and voices are AI-generated. Stories are written by people and AI together, and every fact is checked against real news reports. Inaccuracies may slip through diligent checks — if something looks wrong, tell a grown-up and check the news source.</p>
+  <p>Adapted for kids from real news reporting. NewsToons is an independent family project, not affiliated with any news organisation. <a href="../sources/">Our news sources →</a></p>
   <p>Episodes © the Family M-Team, licensed
      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">CC BY-NC-ND 4.0</a>
      — share freely with credit; no commercial use, no remixes.</p>
