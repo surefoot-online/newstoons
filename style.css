@@ -125,3 +125,12 @@ figure { text-align: center; }
 .face:hover { transform: scale(1.12); }
 .face.chosen { border-color: #ff7a1a; background: #fff3e6; transform: scale(1.15); }
 .rate-thanks { margin-top: 0.6rem; font-weight: 800; color: #1d5fd6; }
+
+/* sponsorship page */
+.sponsorpage { text-align: left; max-width: 720px; margin: 0 auto; }
+.sponsorpage h1 { text-align: center; }
+.sponsorpage h2 { margin: 1.4rem 0 0.4rem; font-size: 1.15rem; color: #1d5fd6; }
+.sponsorpage p, .sponsorpage li { margin-bottom: 0.7rem; line-height: 1.55; }
+.sponsorpage .lead { font-weight: 700; }
+.sponsorpage ul { padding-left: 1.2rem; }
+.sponsorpage .contact { margin-top: 1.2rem; font-weight: 700; }
