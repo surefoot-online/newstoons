@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NewsToons — the news, drawn for kids — Episode 10</title>
+<meta name="description" content="Episode 10: A Fence for the Birds & A Gift of 58 Years">
+<link rel="stylesheet" href="../style.css?v=eaf63b5e">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+</head>
+<body>
+<header>
+  <a class="masthead" href="../index.html"><span class="news">News</span><span class="toons">Toons</span></a>
+  <p class="tagline">Today's news, tomorrow's adventure ✏️✨</p>
+  <p class="ages">For kids of all ages</p>
+</header>
+<main>
+
+<article class="episode">
+  <h1>Episode 10: A Fence for the Birds &amp; A Gift of 58 Years</h1>
+  <p class="meta"><span class="badge">Good News Network</span>
+     2026-08-05 · Priya, Miles &amp; Mei</p>
+  <p class="chips"><span class="chip">An 11,200-foot predator-exclusion fence on Kauaʻi protects 168 acres of seabird nesting ground</span><span class="chip">Eddie Smith Jr. gives Grady-White Boats to a purpose trust and a charitable organisation after 58 years</span></p>
+  <figure><img src="../assets/ep10/panel1.webp" alt="Panel 1: Studio Welcome" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel1.mp3" data-tap="listen:en-US:ep10:p1" data-label="🔊 Listen" aria-label="listen to panel 1">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel2.webp" alt="Panel 2: A Fence Two Miles Long" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel2.mp3" data-tap="listen:en-US:ep10:p2" data-label="🔊 Listen" aria-label="listen to panel 2">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel3.webp" alt="Panel 3: How the Fence Works" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel3.mp3" data-tap="listen:en-US:ep10:p3" data-label="🔊 Listen" aria-label="listen to panel 3">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel4.webp" alt="Panel 4: Fifty-Eight Years of Boats" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel4.mp3" data-tap="listen:en-US:ep10:p4" data-label="🔊 Listen" aria-label="listen to panel 4">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel5.webp" alt="Panel 5: The Gift" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel5.mp3" data-tap="listen:en-US:ep10:p5" data-label="🔊 Listen" aria-label="listen to panel 5">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel6.webp" alt="Panel 6: Sprocket&#x27;s Fun Fact" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel6.mp3" data-tap="listen:en-US:ep10:p6" data-label="🔊 Listen" aria-label="listen to panel 6">🔊 Listen</button></figure>
+<figure><img src="../assets/ep10/panel7.webp" alt="Panel 7: Resolution" loading="lazy" width="1400" height="1050"><button class="listen" data-audio="../assets/ep10/panel7.mp3" data-tap="listen:en-US:ep10:p7" data-label="🔊 Listen" aria-label="listen to panel 7">🔊 Listen</button></figure>
+
+  <section class="rating" data-ep="rate:en-US:ep10">
+    <p class="rate-ask">Did you like this episode?</p>
+    <div class="rate-faces">
+      <button class="face" data-rate="happy" aria-label="happy">🙂</button>
+      <button class="face" data-rate="ok" aria-label="ok">😐</button>
+      <button class="face" data-rate="sad" aria-label="sad">🙁</button>
+    </div>
+    <p class="rate-thanks" hidden>Thank you! 💛</p>
+  </section>
+  <nav class="epnav"><a class="btn" href="../ep9/">⬅️ Episode 9</a><a class="btn home" href="../index.html">Episodes 🏠</a><span></span></nav>
+</article>
+</main>
+<script>
+window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.NEWSTOONS_PAGE_KEY = 'page:en-US:ep10';
+window.newstoonsTap = function (key) {
+  try {
+    fetch(window.NEWSTOONS_TELEMETRY, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ k: key }),
+    }).catch(function () {});
+  } catch (e) {}
+};
+/* Journey shapes — aggregate only. sessionStorage lives until the tab closes,
+   holds no identifier, and is never transmitted: we send counters, not people. */
+(function () {
+  var K = window.NEWSTOONS_PAGE_KEY;
+  if (!K) return;
+  var here = K.slice(5); // strip "page:"
+  var S = window.sessionStorage;
+  var prev, count, ss = true;
+  try { prev = S.getItem('nt_prev'); count = parseInt(S.getItem('nt_count') || '0', 10); }
+  catch (e) { ss = false; count = 0; }
+
+  window.newstoonsTap(K);
+  if (!ss) return;
+
+  if (!prev) {
+    window.newstoonsTap('entry:' + here);
+    var ref = document.referrer || '';
+    if (ref && ref.indexOf(location.host) === -1) window.newstoonsTap('flow:external>' + here);
+  } else if (prev !== here) {
+    window.newstoonsTap('flow:' + prev + '>' + here);
+  }
+
+  count += 1;
+  try { S.setItem('nt_prev', here); S.setItem('nt_count', String(count)); } catch (e) {}
+
+  // Depth + exit are reported when the visit's last page goes away.
+  var sent = false;
+  function closeOut() {
+    if (sent) return; sent = true;
+    var n = 1;
+    try { n = parseInt(S.getItem('nt_count') || '1', 10); } catch (e) {}
+    window.newstoonsTap('depth:' + (n >= 5 ? '5plus' : String(n)));
+    window.newstoonsTap('exit:' + here);
+  }
+  window.addEventListener('pagehide', closeOut);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') closeOut();
+  });
+
+  // Per-episode funnel: opened -> listened -> rated (each once per visit).
+  if (/:ep[0-9]+$/.test(here)) {
+    var fk = 'funnel:' + here + ':';
+    var mark = function (stage) {
+      var flag = 'nt_f_' + here + '_' + stage;
+      try { if (S.getItem(flag)) return; S.setItem(flag, '1'); } catch (e) {}
+      window.newstoonsTap(fk + stage);
+    };
+    mark('opened');
+    window.newstoonsFunnel = mark;
+  }
+})();
+document.addEventListener('click', function (ev) {
+  var face = ev.target.closest('.face');
+  if (face) {
+    var box = face.closest('.rating');
+    if (box && !box.dataset.done) {
+      box.dataset.done = '1';
+      window.newstoonsTap(box.dataset.ep + ':' + face.dataset.rate);
+      if (window.newstoonsFunnel) window.newstoonsFunnel('rated');
+      box.querySelectorAll('.face').forEach(function (f) { f.classList.remove('chosen'); });
+      face.classList.add('chosen');
+      var t = box.querySelector('.rate-thanks');
+      if (t) t.hidden = false;
+    }
+    return;
+  }
+  var btn = ev.target.closest('.listen');
+  if (!btn) return;
+  if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
+  if (window.newstoonsFunnel) window.newstoonsFunnel('listened');
+  var current = document.querySelector('audio[data-live]');
+  if (current) {
+    var was = current.dataset.src === btn.dataset.audio;
+    current.pause(); current.remove();
+    document.querySelectorAll('.listen.playing').forEach(function (b) {
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
+    });
+    if (was) return;
+  }
+  var a = new Audio(btn.dataset.audio);
+  a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
+  document.body.appendChild(a);
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
+  a.onended = function () {
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
+  };
+  a.play();
+});
+</script>
+
+<footer>
+  <p class="ainotice">🤖 Art and voices are AI-generated. Stories are written by people and AI together, and every fact is checked against real news reports. Inaccuracies may slip through diligent checks — if something looks wrong, tell a grown-up and check the news source.</p>
+  <p>Adapted for kids from real news reporting. NewsToons is an independent family project, not affiliated with any news organisation. <a href="../sources/">Our news sources →</a></p>
+  <p>Episodes © the Family M-Team, licensed
+     <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">CC BY-NC-ND 4.0</a>
+     — share freely with credit; no commercial use, no remixes.</p>
+  <p class="sponsors">NewsToons is made possible by <a href="https://bloome.im" rel="sponsored noopener" target="_blank"><strong>Bloome</strong></a> and <a href="https://mulerun.com" rel="sponsored noopener" target="_blank"><strong>MuleRun</strong></a>.</p>
+  <p><a href="../sponsors/">Sponsorship welcome 🤝</a> · Made with ❤️ by the Family M-Team.</p>
+</footer>
+<!-- Cloudflare Web Analytics (cookie-less, no PII) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be94e2ce8e1d49d4bef619eae187f208"}'></script>
+</body>
+</html>
