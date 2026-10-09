@@ -34,7 +34,9 @@
     var sel = landG.selectAll('path').data(countries).enter().append('path')
       .attr('fill', function (d) {
         var e = EDITIONS[+d.id];
-        // Selectable (live) = dark green; coming soon = yellow; rest = light green.
+        // Selectable (live) = dark green; coming soon = yellow; rest = light green. A country whose
+        // stories are only in another language is plain land on this page (Markus 2026-10-09 00:40).
+        if (e && e.elsewhere) return '#b5e0ad';
         return e ? (e.live ? '#1e8a3c' : '#ffd94d') : '#b5e0ad';
       })
       .attr('stroke', '#ffffff').attr('stroke-width', 0.6)
@@ -44,7 +46,7 @@
         var e = EDITIONS[+d.id];
         var name = (d.properties && d.properties.name) || '';
         if (!toast.empty()) {
-          toast.text(name + (e ? (e.live ? ' 📺' : ' · 🌱') : ''))
+          toast.text(name + (e && !e.elsewhere ? (e.live ? ' 📺' : ' · 🌱') : ''))
                .style('opacity', 1);
           clearTimeout(toast.node()._t);
         }
@@ -61,7 +63,8 @@
       var msg;
       if (window.newstoonsTap) window.newstoonsTap('globe:' + (+d.id));
       if (e && e.live && e.path) { window.location.href = e.path; return; }
-      if (e) msg = e.name + ' NewsToons is sprouting — coming soon! 🌱';
+      if (e && e.elsewhere) msg = e.msg;
+      else if (e) msg = e.name + ' NewsToons is sprouting — coming soon! 🌱';
       else msg = (d.properties && d.properties.name ? d.properties.name : 'That country') +
                  ' has no NewsToons yet — maybe you’ll make it one day! ✏️';
       if (!toast.empty()) {
@@ -78,7 +81,7 @@
     // are only a few pixels of land, so give every edition a proper pin.
     var byId = {};
     countries.forEach(function (c) { byId[+c.id] = c; });
-    var markerData = Object.keys(EDITIONS).map(function (k) {
+    var markerData = Object.keys(EDITIONS).filter(function (k) { return !EDITIONS[k].elsewhere; }).map(function (k) {
       var c = byId[+k];
       return c ? { id: +k, e: EDITIONS[+k], centroid: d3.geoCentroid(c), country: c } : null;
     }).filter(Boolean);
@@ -103,6 +106,10 @@
       clearTimeout(toast.node()._t);
       toast.node()._t = setTimeout(function () { toast.style('opacity', 0); }, 400);
     });
+
+    // Open facing a country the reader can pick on this page (the German page opened on America, 2026-10-09).
+    var home = markerData.filter(function (m) { return m.e.live; })[0];
+    if (home) projection.rotate([-home.centroid[0], Math.max(-60, Math.min(60, -home.centroid[1])) * 0.8, 0]);
 
     render();
 

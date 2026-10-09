@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons 台灣 — 畫給孩子看的新聞</title>
 <meta name="description" content="台灣的新聞，畫成孩子看得懂的漫畫。">
-<link rel="stylesheet" href="../style.css?v=35c73e57">
+<link rel="stylesheet" href="../style.css?v=3918e550">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -22,7 +22,7 @@
   <h1>轉一轉地球，選一個 NewsToons 國家！🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="../">United States (English) 🇺🇸</a><a class="btn home" href="./">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="../zh-CN/">China (简体中文) 🇨🇳</a><a class="btn home" href="../de-DE/">Deutschland (Deutsch) 🇩🇪</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">Taiwan (繁體中文) 🇹🇼</a></nav>
 </section>
 <h2 class="grid-title">所有故事</h2>
 <div class="grid">
@@ -150,7 +150,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "../", "live": true, "inlang": false}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./", "live": true, "inlang": true}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "../zh-CN/", "live": true, "inlang": false}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "../de-DE/", "live": true, "inlang": false}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u7f8e\u570b\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u4e2d\u570b\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u5fb7\u570b\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}};</script><script>(function () {
   var here = "zh-TW", paths = {"de-DE": "../de-DE/", "en-US": "../", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -171,7 +171,7 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
-})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=35c73e57"></script>
+})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=3918e550"></script>
 <footer>
   <p class="ainotice">🤖 圖畫與配音由 AI 生成。故事由人和 AI 一起編寫，每個事實都會對照真實新聞查證。 再仔細查證，也可能有疏漏——覺得怪怪的，就告訴大人，一起去看看原本的新聞。</p>
   <p>內容改編自真實新聞報導，適合兒童閱讀。NewsToons 是獨立的家庭專案，與任何新聞機構沒有隸屬關係。 <a href="../sources/">我們的新聞來源 →</a></p>

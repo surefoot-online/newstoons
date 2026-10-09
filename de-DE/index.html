@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons Deutschland — Nachrichten für Kinder, gezeichnet</title>
 <meta name="description" content="Nachrichten aus Deutschland, als freundlicher Comic für Kinder.">
-<link rel="stylesheet" href="../style.css?v=35c73e57">
+<link rel="stylesheet" href="../style.css?v=3918e550">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -22,7 +22,7 @@
   <h1>Dreh den Globus — wähle ein NewsToons-Land! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="../">United States (English) 🇺🇸</a><a class="btn home" href="../zh-TW/">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="../zh-CN/">China (简体中文) 🇨🇳</a><a class="btn home" href="./">Deutschland (Deutsch) 🇩🇪</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">Deutschland (Deutsch) 🇩🇪</a></nav>
 </section>
 <h2 class="grid-title">Alle Geschichten</h2>
 <div class="grid">
@@ -143,7 +143,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "../", "live": true, "inlang": false}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "../zh-TW/", "live": true, "inlang": false}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "../zh-CN/", "live": true, "inlang": false}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./", "live": true, "inlang": true}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus den USA gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus Taiwan gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus China gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
   var here = "de-DE", paths = {"de-DE": "../de-DE/", "en-US": "../", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -164,7 +164,7 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
-})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=35c73e57"></script>
+})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=3918e550"></script>
 <footer>
   <p class="ainotice">🤖 Bilder und Stimmen sind KI-generiert. Die Geschichten schreiben Menschen und KI gemeinsam — jede Tatsache wird an echten Nachrichten geprüft. Trotz sorgfältiger Prüfung können sich Fehler einschleichen — wenn dir etwas komisch vorkommt, sag einem Erwachsenen Bescheid und schaut in der Nachrichtenquelle nach.</p>
   <p>Für Kinder nacherzählt nach echten Nachrichtenberichten. NewsToons ist ein unabhängiges Familienprojekt ohne Verbindung zu Nachrichtenanbietern. <a href="../sources/">Unsere Nachrichtenquellen →</a></p>
