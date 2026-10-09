@@ -88,7 +88,9 @@
       .style('cursor', 'pointer');
     markers.append('circle').attr('r', 13)
       .attr('fill', function (m) { return m.e.live ? '#1e8a3c' : '#ffd94d'; })
-      .attr('stroke', '#ffffff').attr('stroke-width', 2.5);
+      // Orange ring: this country has stories in the reader's chosen language.
+      .attr('stroke', function (m) { return m.e.inlang ? '#ff7a1a' : '#ffffff'; })
+      .attr('stroke-width', function (m) { return m.e.inlang ? 4.5 : 2.5; });
     markers.append('text').text('📺')
       .attr('text-anchor', 'middle').attr('dy', '0.35em')
       .style('font-size', '14px').style('pointer-events', 'none');
