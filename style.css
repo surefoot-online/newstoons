@@ -183,3 +183,5 @@ table.sources th { color: #1d5fd6; }
 .country-links:focus-within {
   position: static; width: auto; height: auto; margin: 0.6rem auto 0; overflow: visible; clip: auto; white-space: normal;
 }
+.grid-title .show-all { color: #ff7a1a; font-size: 0.85em; text-decoration: none; }
+.grid-title .show-all:hover { text-decoration: underline; }
