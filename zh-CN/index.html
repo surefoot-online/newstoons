@@ -22,10 +22,18 @@
   <h1>转一转地球，选一个 NewsToons 国家！🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">China (简体中文) 🇨🇳</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a></nav>
 </section>
 <h2 class="grid-title">所有故事</h2>
 <div class="grid">
+  <a class="card" href="2026-10-13/" data-home="en-US">
+    <img src="assets/2026-10-13/thumb.webp" alt="南瓜大逃亡与勇敢的哥哥" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>南瓜大逃亡与勇敢的哥哥</h2>
+      <p class="date">2026-10-13</p>
+      <p class="origin">🇺🇸 来自美国 · NBC 晚间新闻</p>
+    </div>
+  </a>
   <a class="card" href="2026-08-06/" data-home="zh-CN">
     <img src="assets/2026-08-06/thumb.webp" alt="球场上的歌，火堆边的圈" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -150,7 +158,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u7f8e\u56fd\u8fd8\u6ca1\u6709\u7b80\u4f53\u4e2d\u6587\u7684\u6545\u4e8b\u54e6\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u6362\u4e00\u79cd\u8bed\u8a00\u770b\u770b\u3002"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u53f0\u6e7e\u8fd8\u6ca1\u6709\u7b80\u4f53\u4e2d\u6587\u7684\u6545\u4e8b\u54e6\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u6362\u4e00\u79cd\u8bed\u8a00\u770b\u770b\u3002"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u5fb7\u56fd\u8fd8\u6ca1\u6709\u7b80\u4f53\u4e2d\u6587\u7684\u6545\u4e8b\u54e6\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u6362\u4e00\u79cd\u8bed\u8a00\u770b\u770b\u3002"}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u53f0\u6e7e\u8fd8\u6ca1\u6709\u7b80\u4f53\u4e2d\u6587\u7684\u6545\u4e8b\u54e6\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u6362\u4e00\u79cd\u8bed\u8a00\u770b\u770b\u3002"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u5fb7\u56fd\u8fd8\u6ca1\u6709\u7b80\u4f53\u4e2d\u6587\u7684\u6545\u4e8b\u54e6\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u6362\u4e00\u79cd\u8bed\u8a00\u770b\u770b\u3002"}};</script><script>(function () {
   var here = "zh-CN", paths = {"de-DE": "../de-DE/", "en-US": "../", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -171,6 +179,17 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
+})();</script><script>(function () {
+  var land = new URLSearchParams(location.search).get('land'); if (!land) return;
+  var names = {"en-US": "美国", "de-DE": "德国", "zh-TW": "台湾", "zh-CN": "中国"}, t = "来自{c}的故事", all = "全部显示";
+  var cards = document.querySelectorAll('.grid .card'), n = 0;
+  cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
+  if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
+  var h = document.querySelector('.grid-title'); if (!h) return;
+  h.textContent = t.replace('{c}', names[land] || land);
+  var a = document.createElement('a'); a.href = './'; a.className = 'show-all'; a.textContent = all;
+  h.appendChild(document.createTextNode(' · ')); h.appendChild(a);
+  h.scrollIntoView({behavior: 'smooth'});
 })();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=478d08a0"></script>
 <footer>
   <p class="ainotice">🤖 图画与配音由 AI 生成。故事由人和 AI 一起编写，每个事实都会对照真实新闻核实。 再仔细核实，也可能有疏漏——觉得不对劲，就告诉大人，一起去看看原来的新闻。</p>
