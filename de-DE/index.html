@@ -22,10 +22,18 @@
   <h1>Dreh den Globus — wähle ein NewsToons-Land! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">Deutschland (Deutsch) 🇩🇪</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a></nav>
 </section>
 <h2 class="grid-title">Alle Geschichten</h2>
 <div class="grid">
+  <a class="card" href="2026-10-13/" data-home="en-US">
+    <img src="assets/2026-10-13/thumb.webp" alt="Die große Kürbis-Flucht &amp; Ein mutiger großer Bruder" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Die große Kürbis-Flucht &amp; Ein mutiger großer Bruder</h2>
+      <p class="date">2026-10-13</p>
+      <p class="origin">🇺🇸 aus den USA · NBC Nightly News</p>
+    </div>
+  </a>
   <a class="card" href="2026-10-06/" data-home="de-DE">
     <img src="assets/2026-10-06/thumb.webp" alt="Zwei Nobelpreise, ein Stein aus dem All sucht einen Namen und die größte Buchmesse der Welt" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -143,7 +151,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus den USA gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus Taiwan gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus China gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus Taiwan gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Aus China gibt es noch keine Geschichten auf Deutsch. W\u00e4hle oben eine andere Sprache!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
   var here = "de-DE", paths = {"de-DE": "../de-DE/", "en-US": "../", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -164,6 +172,17 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
+})();</script><script>(function () {
+  var land = new URLSearchParams(location.search).get('land'); if (!land) return;
+  var names = {"en-US": "den USA", "de-DE": "Deutschland", "zh-TW": "Taiwan", "zh-CN": "China"}, t = "Geschichten aus {c}", all = "Alle zeigen";
+  var cards = document.querySelectorAll('.grid .card'), n = 0;
+  cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
+  if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
+  var h = document.querySelector('.grid-title'); if (!h) return;
+  h.textContent = t.replace('{c}', names[land] || land);
+  var a = document.createElement('a'); a.href = './'; a.className = 'show-all'; a.textContent = all;
+  h.appendChild(document.createTextNode(' · ')); h.appendChild(a);
+  h.scrollIntoView({behavior: 'smooth'});
 })();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=478d08a0"></script>
 <footer>
   <p class="ainotice">🤖 Bilder und Stimmen sind KI-generiert. Die Geschichten schreiben Menschen und KI gemeinsam — jede Tatsache wird an echten Nachrichten geprüft. Trotz sorgfältiger Prüfung können sich Fehler einschleichen — wenn dir etwas komisch vorkommt, sag einem Erwachsenen Bescheid und schaut in der Nachrichtenquelle nach.</p>
