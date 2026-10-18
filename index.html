@@ -22,10 +22,41 @@
   <h1>Spin the globe — select a NewsToons land! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">United States (English) 🇺🇸</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a></nav>
 </section>
 <h2 class="grid-title">All stories</h2>
 <div class="grid">
+  <a class="card" href="2026-10-16-tw/" data-home="zh-TW">
+    <img src="assets/2026-10-16-tw/thumb.webp" alt="The Whale Crier&#x27;s Horn &amp; A Giant Baseball Dome" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>The Whale Crier&#x27;s Horn &amp; A Giant Baseball Dome</h2>
+      <p class="date">2026-10-16</p>
+      <p class="origin">🇹🇼 from Taiwan · PTS News (公視新聞)</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-16-de/" data-home="de-DE">
+    <img src="assets/2026-10-16-de/thumb.webp" alt="Table-Tennis Gold, a Baby Giraffe, a Clean Owl &amp; Kind Bus Drivers" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Table-Tennis Gold, a Baby Giraffe, a Clean Owl &amp; Kind Bus Drivers</h2>
+      <p class="date">2026-10-16</p>
+      <p class="origin">🇩🇪 from Germany · WDR, NDR</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-16-cn/" data-home="zh-CN">
+    <img src="assets/2026-10-16-cn/thumb.webp" alt="Goodbye, Leap Second! Smart Grain Stores &amp; A Forest from the Sand" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Goodbye, Leap Second! Smart Grain Stores &amp; A Forest from the Sand</h2>
+      <p class="date">2026-10-16</p>
+      <p class="origin">🇨🇳 from China · Xinwen Lianbo (CCTV) and Xinhua</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-16/" data-home="en-US">
+    <img src="assets/2026-10-16/thumb.webp" alt="LouLou Is Found, a Car That Jumps &amp; the Burger Scholar" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>LouLou Is Found, a Car That Jumps &amp; the Burger Scholar</h2>
+      <p class="date">2026-10-16</p>
+    </div>
+  </a>
   <a class="card" href="2026-10-13/" data-home="en-US">
     <img src="assets/2026-10-13/thumb.webp" alt="The Great Pumpkin Escape &amp; A Brave Big Brother" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -248,7 +279,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "No stories from Taiwan in English yet. Pick another language above to read them!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "No stories from China in English yet. Pick another language above to read them!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "No stories from Germany in English yet. Pick another language above to read them!"}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
   var here = "en-US", paths = {"de-DE": "de-DE/", "en-US": "./", "zh-CN": "zh-CN/", "zh-TW": "zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -269,6 +300,17 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
+})();</script><script>(function () {
+  var land = new URLSearchParams(location.search).get('land'); if (!land) return;
+  var names = {"en-US": "the USA", "de-DE": "Germany", "zh-TW": "Taiwan", "zh-CN": "China"}, t = "Stories from {c}", all = "Show all";
+  var cards = document.querySelectorAll('.grid .card'), n = 0;
+  cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
+  if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
+  var h = document.querySelector('.grid-title'); if (!h) return;
+  h.textContent = t.replace('{c}', names[land] || land);
+  var a = document.createElement('a'); a.href = './'; a.className = 'show-all'; a.textContent = all;
+  h.appendChild(document.createTextNode(' · ')); h.appendChild(a);
+  h.scrollIntoView({behavior: 'smooth'});
 })();</script><script src="vendor/d3.v7.min.js"></script><script src="vendor/topojson-client.min.js"></script><script src="globe.js?v=478d08a0"></script>
 <footer>
   <p class="ainotice">🤖 Art and voices are AI-generated. Stories are written by people and AI together, and every fact is checked against real news reports. Inaccuracies may slip through diligent checks — if something looks wrong, tell a grown-up and check the news source.</p>
