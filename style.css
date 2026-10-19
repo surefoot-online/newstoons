@@ -52,6 +52,12 @@ main { max-width: 960px; margin: 0 auto; padding: 1.2rem; }
   background: #1d5fd6; color: #ffffff; border-radius: 999px;
   padding: 0.12rem 0.7rem; font-size: 0.8rem; font-weight: 700;
 }
+/* pilot edition marker, sized like .badge */
+.pilot {
+  display: inline-block; vertical-align: middle; margin-left: 0.4rem;
+  background: #ff7a1a; color: #ffffff; border-radius: 999px;
+  padding: 0.12rem 0.7rem; font-size: 0.8rem; font-weight: 700;
+}
 .chips { text-align: center; margin-bottom: 1rem; }
 .chip {
   display: inline-block; margin: 0.15rem; padding: 0.18rem 0.7rem;

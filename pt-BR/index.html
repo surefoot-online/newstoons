@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NewsToons Brasil — as notícias, desenhadas para crianças</title>
+<meta name="description" content="Notícias do Brasil contadas em quadrinhos para crianças.">
+<link rel="stylesheet" href="../style.css?v=4c0fdd27">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+</head>
+<body>
+<header>
+  <a class="masthead" href="index.html"><span class="news">News</span><span class="toons">Toons</span></a><span class="pilot">Piloto</span>
+  <p class="tagline">As notícias de hoje, a aventura de amanhã ✏️✨</p>
+  <p class="ages">Para crianças de todas as idades</p>
+</header>
+<main>
+
+<section class="globe-section">
+  <label class="langswitch">🌐 <select id="langselect" aria-label="Language"><option value="../" data-lang="en-US" lang="en">English</option><option value="../de-DE/" data-lang="de-DE" lang="de">Deutsch</option><option value="../zh-TW/" data-lang="zh-TW" lang="zh-Hant">繁體中文</option><option value="../zh-CN/" data-lang="zh-CN" lang="zh-Hans">简体中文</option><option value="../pt-BR/" data-lang="pt-BR" lang="pt-BR" selected>Português</option></select></label>
+  <p class="langhint">Círculos laranja: países com histórias em português</p>
+  <h1>Gire o globo — escolha um país do NewsToons! 🌍</h1>
+  <div id="globe"></div>
+  <div id="globe-toast" role="status"></div>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">Brasil (Português) 🇧🇷</a></nav>
+</section>
+<h2 class="grid-title">Todas as histórias</h2>
+<div class="grid">
+  <a class="card" href="2026-10-18/" data-home="pt-BR">
+    <img src="assets/2026-10-18/thumb.webp" alt="Uma rua para as tartarugas e um anel ao redor do sol" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Uma rua para as tartarugas e um anel ao redor do sol</h2>
+      <p class="date">2026-10-18</p>
+    </div>
+  </a>
+</div>
+</main>
+<script>
+window.NEWSTOONS_TELEMETRY = 'https://newstoons-telemetry.newstoons.workers.dev/t';
+window.NEWSTOONS_PAGE_KEY = 'page:pt-BR:home';
+window.newstoonsTap = function (key) {
+  try {
+    fetch(window.NEWSTOONS_TELEMETRY, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ k: key }),
+    }).catch(function () {});
+  } catch (e) {}
+};
+/* Journey shapes — aggregate only. sessionStorage lives until the tab closes,
+   holds no identifier, and is never transmitted: we send counters, not people. */
+(function () {
+  var K = window.NEWSTOONS_PAGE_KEY;
+  if (!K) return;
+  var here = K.slice(5); // strip "page:"
+  var S = window.sessionStorage;
+  var prev, count, ss = true;
+  try { prev = S.getItem('nt_prev'); count = parseInt(S.getItem('nt_count') || '0', 10); }
+  catch (e) { ss = false; count = 0; }
+
+  window.newstoonsTap(K);
+  if (!ss) return;
+
+  if (!prev) {
+    window.newstoonsTap('entry:' + here);
+    var ref = document.referrer || '';
+    if (ref && ref.indexOf(location.host) === -1) window.newstoonsTap('flow:external>' + here);
+  } else if (prev !== here) {
+    window.newstoonsTap('flow:' + prev + '>' + here);
+  }
+
+  count += 1;
+  try { S.setItem('nt_prev', here); S.setItem('nt_count', String(count)); } catch (e) {}
+
+  // Depth + exit are reported when the visit's last page goes away.
+  var sent = false;
+  function closeOut() {
+    if (sent) return; sent = true;
+    var n = 1;
+    try { n = parseInt(S.getItem('nt_count') || '1', 10); } catch (e) {}
+    window.newstoonsTap('depth:' + (n >= 5 ? '5plus' : String(n)));
+    window.newstoonsTap('exit:' + here);
+  }
+  window.addEventListener('pagehide', closeOut);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') closeOut();
+  });
+
+  // Per-episode funnel: opened -> listened -> rated (each once per visit).
+  if (/:ep[0-9]+$/.test(here)) {
+    var fk = 'funnel:' + here + ':';
+    var mark = function (stage) {
+      var flag = 'nt_f_' + here + '_' + stage;
+      try { if (S.getItem(flag)) return; S.setItem(flag, '1'); } catch (e) {}
+      window.newstoonsTap(fk + stage);
+    };
+    mark('opened');
+    window.newstoonsFunnel = mark;
+  }
+})();
+document.addEventListener('click', function (ev) {
+  var face = ev.target.closest('.face');
+  if (face) {
+    var box = face.closest('.rating');
+    if (box && !box.dataset.done) {
+      box.dataset.done = '1';
+      window.newstoonsTap(box.dataset.ep + ':' + face.dataset.rate);
+      if (window.newstoonsFunnel) window.newstoonsFunnel('rated');
+      box.querySelectorAll('.face').forEach(function (f) { f.classList.remove('chosen'); });
+      face.classList.add('chosen');
+      var t = box.querySelector('.rate-thanks');
+      if (t) t.hidden = false;
+    }
+    return;
+  }
+  var btn = ev.target.closest('.listen');
+  if (!btn) return;
+  if (btn.dataset.tap) window.newstoonsTap(btn.dataset.tap);
+  if (window.newstoonsFunnel) window.newstoonsFunnel('listened');
+  var current = document.querySelector('audio[data-live]');
+  if (current) {
+    var was = current.dataset.src === btn.dataset.audio;
+    current.pause(); current.remove();
+    document.querySelectorAll('.listen.playing').forEach(function (b) {
+      b.classList.remove('playing'); b.textContent = btn.dataset.label;
+    });
+    if (was) return;
+  }
+  var a = new Audio(btn.dataset.audio);
+  a.dataset.live = '1'; a.dataset.src = btn.dataset.audio;
+  document.body.appendChild(a);
+  btn.classList.add('playing'); btn.textContent = '⏸️ …';
+  a.onended = function () {
+    btn.classList.remove('playing'); btn.textContent = btn.dataset.label; a.remove();
+  };
+  a.play();
+});
+</script>
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias dos EUA em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias de Taiwan em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias da China em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias da Alemanha em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
+  var here = "pt-BR", paths = {"de-DE": "../de-DE/", "en-US": "../", "pt-BR": "../pt-BR/", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest('[data-lang]');
+    if (!a) return;
+    try { localStorage.setItem(KEY, a.dataset.lang); } catch (e) {}
+    if (window.newstoonsTap) window.newstoonsTap('lang:' + a.dataset.lang);
+  });
+  var sel = document.getElementById('langselect');
+  if (sel) sel.addEventListener('change', function () {
+    var o = sel.options[sel.selectedIndex];
+    try { localStorage.setItem(KEY, o.dataset.lang); } catch (e) {}
+    if (window.newstoonsTap) window.newstoonsTap('lang:' + o.dataset.lang);
+    location.href = o.value;
+  });
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var fromOutside = !document.referrer || document.referrer.indexOf(location.host) === -1;
+  if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
+    location.replace(paths[saved]);
+  }
+})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=4c0fdd27"></script>
+<footer>
+  <p class="ainotice">🤖 Os desenhos e as vozes são feitos por IA. As histórias são escritas por pessoas e IA juntas, e cada fato é conferido em notícias de verdade. Mesmo com todo o cuidado, algum erro pode escapar — se algo parecer estranho, conte para um adulto e vejam juntos a notícia original.</p>
+  <p>Recontado para crianças a partir de notícias de verdade. NewsToons é um projeto familiar independente, sem ligação com nenhuma empresa de notícias. <a href="../sources/">Nossas fontes de notícias →</a></p>
+  <p>NewsToons stories © the Family M-Team, licensed
+     <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="license">CC BY-NC-ND 4.0</a>
+     — share freely with credit; no commercial use, no remixes.</p>
+  <p class="sponsors">NewsToons is made possible by <a href="https://bloome.im" rel="sponsored noopener" target="_blank"><strong>Bloome</strong></a> and <a href="https://mulerun.com" rel="sponsored noopener" target="_blank"><strong>MuleRun</strong></a>.</p>
+  <p><a href="../sponsors/">Sponsorship welcome 🤝</a> · Made with ❤️ by the Family M-Team.</p>
+</footer>
+<!-- Cloudflare Web Analytics (cookie-less, no PII) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "be94e2ce8e1d49d4bef619eae187f208"}'></script>
+</body>
+</html>

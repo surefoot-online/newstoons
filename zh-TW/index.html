@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NewsToons 台灣 — 畫給孩子看的新聞</title>
 <meta name="description" content="台灣的新聞，畫成孩子看得懂的漫畫。">
-<link rel="stylesheet" href="../style.css?v=478d08a0">
+<link rel="stylesheet" href="../style.css?v=4c0fdd27">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
 </head>
 <body>
@@ -17,7 +17,7 @@
 <main>
 
 <section class="globe-section">
-  <label class="langswitch">🌐 <select id="langselect" aria-label="Language"><option value="../" data-lang="en-US" lang="en">English</option><option value="../de-DE/" data-lang="de-DE" lang="de">Deutsch</option><option value="../zh-TW/" data-lang="zh-TW" lang="zh-Hant" selected>繁體中文</option><option value="../zh-CN/" data-lang="zh-CN" lang="zh-Hans">简体中文</option></select></label>
+  <label class="langswitch">🌐 <select id="langselect" aria-label="Language"><option value="../" data-lang="en-US" lang="en">English</option><option value="../de-DE/" data-lang="de-DE" lang="de">Deutsch</option><option value="../zh-TW/" data-lang="zh-TW" lang="zh-Hant" selected>繁體中文</option><option value="../zh-CN/" data-lang="zh-CN" lang="zh-Hans">简体中文</option><option value="../pt-BR/" data-lang="pt-BR" lang="pt-BR">Português</option></select></label>
   <p class="langhint">橘色圈圈：有繁體中文故事的國家</p>
   <h1>轉一轉地球，選一個 NewsToons 國家！🌍</h1>
   <div id="globe"></div>
@@ -220,8 +220,8 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
-  var here = "zh-TW", paths = {"de-DE": "../de-DE/", "en-US": "../", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u5df4\u897f\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}};</script><script>(function () {
+  var here = "zh-TW", paths = {"de-DE": "../de-DE/", "en-US": "../", "pt-BR": "../pt-BR/", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
     if (!a) return;
@@ -243,7 +243,7 @@ document.addEventListener('click', function (ev) {
   }
 })();</script><script>(function () {
   var land = new URLSearchParams(location.search).get('land'); if (!land) return;
-  var names = {"en-US": "美國", "de-DE": "德國", "zh-TW": "台灣", "zh-CN": "中國"}, t = "來自{c}的故事", all = "全部顯示";
+  var names = {"en-US": "美國", "de-DE": "德國", "zh-TW": "台灣", "zh-CN": "中國", "pt-BR": "巴西"}, t = "來自{c}的故事", all = "全部顯示";
   var cards = document.querySelectorAll('.grid .card'), n = 0;
   cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
   if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
@@ -252,7 +252,7 @@ document.addEventListener('click', function (ev) {
   var a = document.createElement('a'); a.href = './'; a.className = 'show-all'; a.textContent = all;
   h.appendChild(document.createTextNode(' · ')); h.appendChild(a);
   h.scrollIntoView({behavior: 'smooth'});
-})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=478d08a0"></script>
+})();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=4c0fdd27"></script>
 <footer>
   <p class="ainotice">🤖 圖畫與配音由 AI 生成。故事由人和 AI 一起編寫，每個事實都會對照真實新聞查證。 再仔細查證，也可能有疏漏——覺得怪怪的，就告訴大人，一起去看看原本的新聞。</p>
   <p>內容改編自真實新聞報導，適合兒童閱讀。NewsToons 是獨立的家庭專案，與任何新聞機構沒有隸屬關係。 <a href="../sources/">我們的新聞來源 →</a></p>
