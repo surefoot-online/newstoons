@@ -17,15 +17,23 @@
 <main>
 
 <section class="globe-section">
-  <label class="langswitch">🌐 <select id="langselect" aria-label="Language"><option value="./" data-lang="en-US" lang="en" selected>English</option><option value="de-DE/" data-lang="de-DE" lang="de">Deutsch</option><option value="zh-TW/" data-lang="zh-TW" lang="zh-Hant">繁體中文</option><option value="zh-CN/" data-lang="zh-CN" lang="zh-Hans">简体中文</option><option value="pt-BR/" data-lang="pt-BR" lang="pt-BR">Português</option></select></label>
+  <label class="langswitch">🌐 <select id="langselect" aria-label="Language"><option value="./" data-lang="en-US" lang="en" selected>English</option><option value="de-DE/" data-lang="de-DE" lang="de">Deutsch</option><option value="zh-TW/" data-lang="zh-TW" lang="zh-Hant">繁體中文</option><option value="zh-CN/" data-lang="zh-CN" lang="zh-Hans">简体中文</option><option value="pt-BR/" data-lang="pt-BR" lang="pt-BR">Português</option><option value="vi-VN/" data-lang="vi-VN" lang="vi">Tiếng Việt</option></select></label>
   <p class="langhint">Orange rings: countries with stories in English</p>
   <h1>Spin the globe — select a NewsToons land! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a><a class="btn home" href="./?land=pt-BR">Brasil (Português) 🇧🇷</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a><a class="btn home" href="./?land=pt-BR">Brasil (Português) 🇧🇷</a><a class="btn home" href="./?land=vi-VN">Việt Nam (Tiếng Việt) 🇻🇳</a></nav>
 </section>
 <h2 class="grid-title">All stories</h2>
 <div class="grid">
+  <a class="card" href="2026-10-29/" data-home="vi-VN">
+    <img src="assets/2026-10-29/thumb.webp" alt="New Classrooms in the Hills, a New Runway &amp; Millions of Eels" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>New Classrooms in the Hills, a New Runway &amp; Millions of Eels</h2>
+      <p class="date">2026-10-29</p>
+      <p class="origin">🇻🇳 from Vietnam · VnExpress <span class="pilot">Pilot</span></p>
+    </div>
+  </a>
   <a class="card" href="2026-10-28-tw/" data-home="zh-TW">
     <img src="assets/2026-10-28-tw/thumb.webp" alt="Whale Neighbors, a Bongo Named Harris &amp; a Walk-Off Win" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -513,8 +521,8 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./?land=pt-BR", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
-  var here = "en-US", paths = {"de-DE": "de-DE/", "en-US": "./", "pt-BR": "pt-BR/", "zh-CN": "zh-CN/", "zh-TW": "zh-TW/"}, KEY = 'nt_lang';
+<script>window.NEWSTOONS_ROOT = ""; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./?land=pt-BR", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "704": {"name": "Vietnam", "label": "Vi\u1ec7t Nam (Ti\u1ebfng Vi\u1ec7t) \ud83c\uddfb\ud83c\uddf3", "path": "./?land=vi-VN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
+  var here = "en-US", paths = {"de-DE": "de-DE/", "en-US": "./", "pt-BR": "pt-BR/", "vi-VN": "vi-VN/", "zh-CN": "zh-CN/", "zh-TW": "zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
     if (!a) return;
@@ -536,7 +544,7 @@ document.addEventListener('click', function (ev) {
   }
 })();</script><script>(function () {
   var land = new URLSearchParams(location.search).get('land'); if (!land) return;
-  var names = {"en-US": "the USA", "de-DE": "Germany", "zh-TW": "Taiwan", "zh-CN": "China", "pt-BR": "Brazil"}, t = "Stories from {c}", all = "Show all";
+  var names = {"en-US": "the USA", "de-DE": "Germany", "zh-TW": "Taiwan", "zh-CN": "China", "pt-BR": "Brazil", "vi-VN": "Vietnam"}, t = "Stories from {c}", all = "Show all";
   var cards = document.querySelectorAll('.grid .card'), n = 0;
   cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
   if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
