@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-  <a class="masthead" href="index.html"><span class="news">News</span><span class="toons">Toons</span></a><span class="pilot">Piloto</span>
+  <a class="masthead" href="index.html"><span class="news">News</span><span class="toons">Toons</span></a>
   <p class="tagline">As notícias de hoje, a aventura de amanhã ✏️✨</p>
   <p class="ages">Para crianças de todas as idades</p>
 </header>
@@ -22,10 +22,57 @@
   <h1>Gire o globo — escolha um país do NewsToons! 🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./">Brasil (Português) 🇧🇷</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a><a class="btn home" href="./?land=pt-BR">Brasil (Português) 🇧🇷</a><a class="btn home" href="./?land=vi-VN">Việt Nam (Tiếng Việt) 🇻🇳</a></nav>
 </section>
 <h2 class="grid-title">Todas as histórias</h2>
 <div class="grid">
+  <a class="card" href="2026-10-31-vn/" data-home="vi-VN">
+    <img src="assets/2026-10-31-vn/thumb.webp" alt="Filhotes de tartaruga, uma praia reabre, cuidando de túmulos antigos e um novo número um" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Filhotes de tartaruga, uma praia reabre, cuidando de túmulos antigos e um novo número um</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇻🇳 do Vietnã · VnExpress</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-us/" data-home="en-US">
+    <img src="assets/2026-10-31-us/thumb.webp" alt="Relógios para trás, o rosto novo de uma estátua e lontras brincando com abóboras" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Relógios para trás, o rosto novo de uma estátua e lontras brincando com abóboras</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇺🇸 dos EUA · NBC News</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-tw/" data-home="zh-TW">
+    <img src="assets/2026-10-31-tw/thumb.webp" alt="Dezesseis escritores num trem e entrar nas montanhas com segurança" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Dezesseis escritores num trem e entrar nas montanhas com segurança</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇹🇼 de Taiwan · PTS News (公視新聞)</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-de/" data-home="de-DE">
+    <img src="assets/2026-10-31-de/thumb.webp" alt="O pônei Micky, a faixa faz 75 anos, a última viagem da Emma e dachshunds no museu" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>O pônei Micky, a faixa faz 75 anos, a última viagem da Emma e dachshunds no museu</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇩🇪 da Alemanha · tagesschau, NDR, SR &amp; hr</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-cn/" data-home="zh-CN">
+    <img src="assets/2026-10-31-cn/thumb.webp" alt="Preparando a ida à Lua, novas normas, ar líquido e folhas vermelhas na Grande Muralha" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Preparando a ida à Lua, novas normas, ar líquido e folhas vermelhas na Grande Muralha</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇨🇳 da China · Xinwen Lianbo (CCTV)</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31/" data-home="pt-BR">
+    <img src="assets/2026-10-31/thumb.webp" alt="Câmeras inteligentes, vaga-lumes, o truque da frigideira quente e desafios de Halloween" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>Câmeras inteligentes, vaga-lumes, o truque da frigideira quente e desafios de Halloween</h2>
+      <p class="date">2026-10-31</p>
+    </div>
+  </a>
   <a class="card" href="2026-10-28/" data-home="pt-BR">
     <img src="assets/2026-10-28/thumb.webp" alt="Um mundo novo além de Plutão e um filhote de lobo-marinho recebe ajuda" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -171,7 +218,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias dos EUA em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias de Taiwan em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias da China em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias da Alemanha em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "704": {"name": "Vietnam", "label": "Vi\u1ec7t Nam (Ti\u1ebfng Vi\u1ec7t) \ud83c\uddfb\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "Ainda n\u00e3o temos hist\u00f3rias do Vietn\u00e3 em portugu\u00eas. Escolha outro idioma l\u00e1 em cima!"}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./?land=pt-BR", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "704": {"name": "Vietnam", "label": "Vi\u1ec7t Nam (Ti\u1ebfng Vi\u1ec7t) \ud83c\uddfb\ud83c\uddf3", "path": "./?land=vi-VN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
   var here = "pt-BR", paths = {"de-DE": "../de-DE/", "en-US": "../", "pt-BR": "../pt-BR/", "vi-VN": "../vi-VN/", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
@@ -192,6 +239,17 @@ document.addEventListener('click', function (ev) {
   if (here === 'en-US' && saved && saved !== here && paths[saved] && fromOutside) {
     location.replace(paths[saved]);
   }
+})();</script><script>(function () {
+  var land = new URLSearchParams(location.search).get('land'); if (!land) return;
+  var names = {"en-US": "dos EUA", "de-DE": "da Alemanha", "zh-TW": "de Taiwan", "zh-CN": "da China", "pt-BR": "do Brasil", "vi-VN": "do Vietnã"}, t = "Histórias {c}", all = "Mostrar todas";
+  var cards = document.querySelectorAll('.grid .card'), n = 0;
+  cards.forEach(function (c) { var on = c.dataset.home === land; c.style.display = on ? '' : 'none'; if (on) n++; });
+  if (!n) { cards.forEach(function (c) { c.style.display = ''; }); return; }
+  var h = document.querySelector('.grid-title'); if (!h) return;
+  h.textContent = t.replace('{c}', names[land] || land);
+  var a = document.createElement('a'); a.href = './'; a.className = 'show-all'; a.textContent = all;
+  h.appendChild(document.createTextNode(' · ')); h.appendChild(a);
+  h.scrollIntoView({behavior: 'smooth'});
 })();</script><script src="../vendor/d3.v7.min.js"></script><script src="../vendor/topojson-client.min.js"></script><script src="../globe.js?v=4c0fdd27"></script>
 <footer>
   <p class="ainotice">🤖 Os desenhos e as vozes são feitos por IA. As histórias são escritas por pessoas e IA juntas, e cada fato é conferido em notícias de verdade. Mesmo com todo o cuidado, algum erro pode escapar — se algo parecer estranho, conte para um adulto e vejam juntos a notícia original.</p>

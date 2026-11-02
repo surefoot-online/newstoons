@@ -22,10 +22,57 @@
   <h1>轉一轉地球，選一個 NewsToons 國家！🌍</h1>
   <div id="globe"></div>
   <div id="globe-toast" role="status"></div>
-  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a></nav>
+  <nav class="lang-buttons country-links" aria-label="Countries"><a class="btn home" href="./?land=en-US">United States (English) 🇺🇸</a><a class="btn home" href="./?land=zh-TW">Taiwan (繁體中文) 🇹🇼</a><a class="btn home" href="./?land=zh-CN">China (简体中文) 🇨🇳</a><a class="btn home" href="./?land=de-DE">Deutschland (Deutsch) 🇩🇪</a><a class="btn home" href="./?land=pt-BR">Brasil (Português) 🇧🇷</a><a class="btn home" href="./?land=vi-VN">Việt Nam (Tiếng Việt) 🇻🇳</a></nav>
 </section>
 <h2 class="grid-title">所有故事</h2>
 <div class="grid">
+  <a class="card" href="2026-10-31-vn/" data-home="vi-VN">
+    <img src="assets/2026-10-31-vn/thumb.webp" alt="小海龜奔向大海、海灘重新開放、照顧古老的陵墓和新的世界第一" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>小海龜奔向大海、海灘重新開放、照顧古老的陵墓和新的世界第一</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇻🇳 來自越南 · VnExpress</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-us/" data-home="en-US">
+    <img src="assets/2026-10-31-us/thumb.webp" alt="時鐘往回撥、雕像的新臉和玩南瓜的水獺" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>時鐘往回撥、雕像的新臉和玩南瓜的水獺</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇺🇸 來自美國 · NBC News</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-de/" data-home="de-DE">
+    <img src="assets/2026-10-31-de/thumb.webp" alt="小馬米奇38歲了、斑馬線75歲了、艾瑪的最後一趟和臘腸狗逛美術館" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>小馬米奇38歲了、斑馬線75歲了、艾瑪的最後一趟和臘腸狗逛美術館</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇩🇪 來自德國 · tagesschau, NDR, SR &amp; hr</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-cn/" data-home="zh-CN">
+    <img src="assets/2026-10-31-cn/thumb.webp" alt="準備登上月球、玩具和教室光線的新規則、用液態空氣存電和長城上的紅葉" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>準備登上月球、玩具和教室光線的新規則、用液態空氣存電和長城上的紅葉</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇨🇳 來自中國 · Xinwen Lianbo (CCTV)</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31-br/" data-home="pt-BR">
+    <img src="assets/2026-10-31-br/thumb.webp" alt="聰明的攝影機、夜裡的螢火蟲、熱鍋冒煙的祕密和萬聖節益智遊戲" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>聰明的攝影機、夜裡的螢火蟲、熱鍋冒煙的祕密和萬聖節益智遊戲</h2>
+      <p class="date">2026-10-31</p>
+      <p class="origin">🇧🇷 來自巴西 · g1 (TV Globo)</p>
+    </div>
+  </a>
+  <a class="card" href="2026-10-31/" data-home="zh-TW">
+    <img src="assets/2026-10-31/thumb.webp" alt="16位作家在火車上一起寫一本書，還有安全走進山林" loading="lazy" width="480" height="360">
+    <div class="cardbody">
+      <h2>16位作家在火車上一起寫一本書，還有安全走進山林</h2>
+      <p class="date">2026-10-31</p>
+    </div>
+  </a>
   <a class="card" href="2026-10-28-us/" data-home="en-US">
     <img src="assets/2026-10-28-us/thumb.webp" alt="國王潮、碰到卡車的機翼和恩尼的最後一季" loading="lazy" width="480" height="360">
     <div class="cardbody">
@@ -375,7 +422,7 @@ document.addEventListener('click', function (ev) {
   a.play();
 });
 </script>
-<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u5df4\u897f\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}, "704": {"name": "Vietnam", "label": "Vi\u1ec7t Nam (Ti\u1ebfng Vi\u1ec7t) \ud83c\uddfb\ud83c\uddf3", "path": "", "live": false, "inlang": false, "elsewhere": true, "msg": "\u8d8a\u5357\u9084\u6c92\u6709\u7e41\u9ad4\u4e2d\u6587\u7684\u6545\u4e8b\u5594\uff01\u53ef\u4ee5\u5728\u4e0a\u9762\u63db\u4e00\u7a2e\u8a9e\u8a00\u770b\u770b\u3002"}};</script><script>(function () {
+<script>window.NEWSTOONS_ROOT = "../"; window.NEWSTOONS_EDITIONS = {"840": {"name": "United States", "label": "United States (English) \ud83c\uddfa\ud83c\uddf8", "path": "./?land=en-US", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "158": {"name": "Taiwan", "label": "Taiwan (\u7e41\u9ad4\u4e2d\u6587) \ud83c\uddf9\ud83c\uddfc", "path": "./?land=zh-TW", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "156": {"name": "China", "label": "China (\u7b80\u4f53\u4e2d\u6587) \ud83c\udde8\ud83c\uddf3", "path": "./?land=zh-CN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "276": {"name": "Germany", "label": "Deutschland (Deutsch) \ud83c\udde9\ud83c\uddea", "path": "./?land=de-DE", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "76": {"name": "Brazil", "label": "Brasil (Portugu\u00eas) \ud83c\udde7\ud83c\uddf7", "path": "./?land=pt-BR", "live": true, "inlang": true, "elsewhere": false, "msg": ""}, "704": {"name": "Vietnam", "label": "Vi\u1ec7t Nam (Ti\u1ebfng Vi\u1ec7t) \ud83c\uddfb\ud83c\uddf3", "path": "./?land=vi-VN", "live": true, "inlang": true, "elsewhere": false, "msg": ""}};</script><script>(function () {
   var here = "zh-TW", paths = {"de-DE": "../de-DE/", "en-US": "../", "pt-BR": "../pt-BR/", "vi-VN": "../vi-VN/", "zh-CN": "../zh-CN/", "zh-TW": "../zh-TW/"}, KEY = 'nt_lang';
   document.addEventListener('click', function (ev) {
     var a = ev.target.closest('[data-lang]');
